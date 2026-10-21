@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("../font-icons/icomoon.eot?ocv00h");
+  src:
+    url("../font-icons/icomoon.eot?ocv00h#iefix") format("embedded-opentype"),
+    url("../font-icons/icomoon.ttf?ocv00h") format("truetype"),
+    url("../font-icons/icomoon.woff?ocv00h") format("woff"),
+    url("../font-icons/icomoon.svg?ocv00h#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrow-down-2:before {
+  content: "";
+}
+.icon-arrow-read-more:before {
+  content: "";
+}
+.icon-arrow-right:before {
+  content: "";
+}
+.icon-arrow-right-button:before {
+  content: "";
+}
+.icon-basket-cart:before {
+  content: "";
+}
+.icon-busket:before {
+  content: "";
+}
+.icon-busket-mobile:before {
+  content: "";
+}
+.icon-facebook:before {
+  content: "";
+}
+.icon-google-2:before {
+  content: "";
+}
+.icon-heart:before {
+  content: "";
+}
+.icon-heart-mobile:before {
+  content: "";
+}
+.icon-home-mobile:before {
+  content: "";
+}
+.icon-instagram:before {
+  content: "";
+}
+.icon-linkedin:before {
+  content: "";
+}
+.icon-mail:before {
+  content: "";
+}
+.icon-search:before {
+  content: "";
+}
+.icon-star:before {
+  content: "";
+}
+.icon-twitter:before {
+  content: "";
+}
+.icon-union:before {
+  content: "";
+}
+.icon-user-mobile:before {
+  content: "";
+}
+.icon-message:before {
+  content: "";
+}
+.icon-location:before {
+  content: "";
+}
+.icon-hide:before {
+  content: "";
+}
+.icon-logout:before {
+  content: "";
+}
+.icon-delete:before {
+  content: "";
+}
+.icon-phone:before {
+  content: "";
+}
+.icon-google:before {
+  content: "";
+}

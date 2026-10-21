@@ -1,27 +1,19 @@
 ﻿// Подключение шрифтов только в самом верху
-// @import url("../css/fonts.css");
-// @import url("../css/icons-fonts.css");
-// @import '../css/components/components.css';
-// @import "../css/components/anim.css";
-// @import "../scss/components/ibj.scss";
-// @import "../scss/components/adaptive-font";
-// $maxWidth: 1280;
-// @include adaptive-font(40, 24);(Использовать для адаптивного шрифта: 1 - мах знач, 2 - мин знач.)
-// @import "../scss/adaptive-value.scss";
-// @include adaptive-value("padding", 40, 24, 0);(Использовать для адаптивного шрифта: 1 - мах знач, 2 - мин знач., 3 - режим)
+@import "adaptive-value"; // Импорт локального scss (без расширения)
+@import "font-icons"; // Импорт локального scss (без расширения)
+@import "burgers"; // Импорт локального scss
+// @import "components";
+// @import "anim";
+
 $maxWidth: 1440;
 $maxWidthContainer: 1230;
-// max-width(1170px){}
-// max-width(991.98px){}
-// max-width(767.98px){}
-// max-width(479.98px){}
-// чтоб перевести в rem, нужно ..px / 16px
-// :root {
-// 	--text-default: #101010;
-// 	--text-primary: #db574d;
-// 	--text-muted: rgba(16, 16, 16, 0.6);
-// 	--text-inverse: #fff;
-// }
+
+:root {
+	--text-default: #727272;
+	// --text-primary: #db574d;
+	// --text-muted: rgba(16, 16, 16, 0.6);
+	// --text-inverse: #fff;
+}
 // color: var(--text-default);
 .wrapper {
 	min-height: 100%;
@@ -62,5 +54,106 @@ $maxWidthContainer: 1230;
 }
 
 body {
-  font-family: 'Cera Pro', sans-serif;
+	font-family: "Cera Pro", sans-serif;
+	color: var(--text-default);
+}
+
+// =========== header =============
+
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	background-color: var(--background);
+	transition: all 0.5s;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@include adaptive-value("padding-block", 26, 20, 0);
+		@include adaptive-value("min-height", 90, 80, 0);
+		gap: 1.25rem;
+	}
+
+	&__logo {
+		z-index: 5;
+		@media (max-width: 47.9988rem) {
+			flex-grow: 1;
+		}
+	}
+
+	&__menu {
+	}
+
+	&__actions-hide {
+		display: flex;
+		justify-content: end;
+		align-items: end;
+		gap: 1.25rem;
+		@media (min-width: 47.9988rem) {
+			display: none;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		@include adaptive-value("gap", 30, 20, 0);
+	}
+
+	&__button {
+	}
+}
+.menu {
+	&__body {
+	}
+
+	&__list {
+	}
+
+	&__item {
+	}
+
+	&__link {
+	}
+
+	&__icon {
+	}
+}
+.menu-header {
+	&__body {
+	}
+
+	&__list {
+		display: flex;
+		@include adaptive-value("gap", 50, 20, 0);
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+			align-items: end;
+			&:not(:last-child) {
+				margin-bottom: 1.25rem;
+			}
+		}
+	}
+
+	&__item {
+	}
+}
+.actions-header {
+	&__cart-hide,
+	&__login-hide {
+		@media (max-width: 47.9988rem) {
+			display: none;
+		}
+	}
+	&__cart {
+	}
+	&__login {
+	}
+
+	&__search {
+		z-index: 5;
+	}
 }
