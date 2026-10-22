@@ -10,47 +10,32 @@ $maxWidthContainer: 1230;
 
 :root {
 	--text-default: #727272;
+	--text-header: #3d3d3d;
+	--green: #46a358;
+	--white: #fff;
 	// --text-primary: #db574d;
 	// --text-muted: rgba(16, 16, 16, 0.6);
 	// --text-inverse: #fff;
 }
+
 // color: var(--text-default);
 .wrapper {
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	overflow: clip; // работает с position: sticky;
-	// min-width: 320px;
-	// max-width: 1920px;
-	//block-size: 100%;
 }
-// ==== Чтоб прибить футер к низу разрешаем main расширяться
 
+// ==== Чтоб прибить футер к низу разрешаем main расширяться
 .wrapper > main {
 	flex-grow: 1;
 }
 
-// ===============Ограничивающий контейнер через селктор класса============
+// ===============Ограничивающий контейнер через селектор класса============
 [class*="__container"] {
 	max-inline-size: 76.875rem;
 	margin-inline: auto;
 	padding-inline: 0.9375rem;
-
-	// max-width: 1230px;
-	// margin: 0 auto;
-	// padding: 0 15px;
-	// box-sizing: border-box;
-
-	// ======== Стандартная адаптивная сетка ================================
-	// @media (max-width: 1199.98px) {
-	//   max-width: 970px;
-	// }
-	// @media (max-width: 991.98px) {
-	//   max-width: 750px;
-	// }
-	// @media (max-width: 767.98px) {
-	//   max-width: none;
-	// }
 }
 
 body {
@@ -58,8 +43,13 @@ body {
 	color: var(--text-default);
 }
 
-// =========== header =============
+// ===========
+.active-link {
+	font-weight: 700;
+	color: var(--green);
+}
 
+// =========== header =============
 .header {
 	position: fixed;
 	width: 100%;
@@ -70,28 +60,48 @@ body {
 	transition: all 0.5s;
 
 	&__container {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: stretch; // Растягиваем всех детей по высоте
 		@include adaptive-value("padding-block", 26, 20, 0);
 		@include adaptive-value("min-height", 90, 80, 0);
 		gap: 1.25rem;
+		border-bottom: 0.0187rem solid rgba(70, 163, 88, 0.5);
 	}
 
 	&__logo {
 		z-index: 5;
+		align-self: center;
+		display: inline-flex; // Добавляем, чтобы transition работал корректно
+		transition: filter 0.3s ease; // Плавность свечения
+
 		@media (max-width: 47.9988rem) {
 			flex-grow: 1;
+		}
+
+		&:hover {
+			// Формула drop-shadow: сдвиг_x сдвиг_y размытие цвет
+			// Сделаем свечение по контуру:
+			filter: drop-shadow(0 0 5px rgba(70, 163, 88, 0.6)) drop-shadow(0 0 15px rgba(70, 163, 88, 0.6));
+		}
+
+		// Убедимся, что сама картинка внутри не мешает
+		img {
+			display: block;
+			max-width: 100%;
+			height: auto;
 		}
 	}
 
 	&__menu {
+		display: flex; // Чтобы меню заняло нужную высоту
 	}
 
 	&__actions-hide {
 		display: flex;
 		justify-content: end;
-		align-items: end;
+		align-items: center; // Центрируем иконки
 		gap: 1.25rem;
 		@media (min-width: 47.9988rem) {
 			display: none;
@@ -100,14 +110,19 @@ body {
 
 	&__actions {
 		display: flex;
+		align-items: center; // Центрируем иконки
 		@include adaptive-value("gap", 30, 20, 0);
 	}
 
 	&__button {
+		display: flex;
+		align-items: center;
 	}
 }
+
 .menu {
 	&__body {
+		display: flex; // Навигация занимает всю высоту
 	}
 
 	&__list {
@@ -117,21 +132,68 @@ body {
 	}
 
 	&__link {
+		position: relative;
+		display: flex;
+		align-items: center;
+		height: 100%; // Растягиваем по высоте
+		color: var(--text-header);
+		transition: color 0.3s;
+
+		// Декоративная полоска
+		&::after {
+			content: "";
+			position: absolute;
+			// Вычитаем нижний паддинг контейнера (26px сверху и 20px снизу адаптивно)
+			// Так как паддинг адаптивный, используем calc с переменной,
+			// но проще всего сделать так:
+			bottom: calc(-1 * var(--padding-bottom, 26px));
+
+			// А ещё лучше — просто привязать полоску к контейнеру,
+			// но так как мы используем флексы, сделаем так:
+			bottom: -26px; // Подставьте сюда ваше значение паддинга снизу
+			// Или используйте margin-bottom: -26px; для ссылки
+
+			left: 0;
+			width: 100%;
+			height: 0.1875rem;
+			background-color: var(--green);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		&:hover {
+			color: var(--green);
+			&::after {
+				opacity: 1;
+			}
+		}
+
+		&.active-link {
+			font-weight: 700;
+			color: var(--green);
+			&::after {
+				opacity: 1;
+			}
+		}
 	}
 
 	&__icon {
 	}
 }
+
 .menu-header {
 	&__body {
 	}
 
 	&__list {
 		display: flex;
+		align-items: stretch; // Растягиваем li по высоте
 		@include adaptive-value("gap", 50, 20, 0);
+
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
 			align-items: end;
+
 			&:not(:last-child) {
 				margin-bottom: 1.25rem;
 			}
@@ -139,18 +201,49 @@ body {
 	}
 
 	&__item {
+		display: flex; // li тоже должен быть флексом
 	}
 }
+
 .actions-header {
+	&__item {
+		font-size: 1.25rem;
+		color: var(--text-header);
+		transition: color 0.5s;
+		&:hover {
+			color: var(--green);
+		}
+	}
 	&__cart-hide,
 	&__login-hide {
 		@media (max-width: 47.9988rem) {
-			display: none;
+			display: none !important;
 		}
 	}
+
 	&__cart {
 	}
+
 	&__login {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		font-weight: 500;
+		color: var(--white);
+		border-radius: 0.375rem;
+		background-color: var(--green);
+		width: 100px;
+		height: 35px;
+		&::before {
+			font-size: 1.25rem;
+		}
+		transition: all 0.5s;
+		&:hover {
+			background-color: var(--white);
+			color: var(--green);
+			border: 0.0625rem solid var(--green);
+		}
 	}
 
 	&__search {
