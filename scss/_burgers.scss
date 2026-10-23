@@ -16,7 +16,7 @@
 		cursor: pointer;
 		z-index: 10;
 
-		border-radius: 14px;
+		border-radius: 0.875rem;
 		box-shadow: 0 0.625rem 1.25rem 0 rgba(70, 163, 88, 0.3);
 		background: linear-gradient(137.05deg, rgba(70, 163, 88, 0.45) -24.6%, #46a358 100%);
 
@@ -100,7 +100,7 @@
 				width: 100%;
 				top: 0;
 				left: -100%;
-				height: 3.75rem;
+				height: 5.625rem;
 				background-color: var(--background-default);
 				transition: left 0.5s ease 0s;
 				z-index: 4;

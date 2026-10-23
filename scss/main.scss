@@ -123,9 +123,16 @@ body {
 .menu {
 	&__body {
 		display: flex; // Навигация занимает всю высоту
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+			gap: 1.25rem;
+		}
 	}
 
 	&__list {
+		@media (max-width: 47.9988rem) {
+			flex-grow: 1;
+		}
 	}
 
 	&__item {
@@ -159,6 +166,9 @@ body {
 			background-color: var(--green);
 			opacity: 0;
 			transition: opacity 0.3s ease;
+			@media (max-width: 47.9988rem){
+				display: none;
+			}
 		}
 
 		&:hover {
@@ -174,6 +184,9 @@ body {
 			&::after {
 				opacity: 1;
 			}
+		}
+			@media (max-width: 47.9988rem) {
+			font-size: 32px;
 		}
 	}
 
