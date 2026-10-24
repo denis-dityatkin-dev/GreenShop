@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="fonts/font.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -21,7 +25,12 @@
             <nav id="menu" class="menu-header__body menu__body">
               <ul class="menu-header__list menu__list">
                 <li class="menu-header__item menu__item">
-                  <a data-goto=".wrapper" href="#" class="menu__link active-link">Home</a>
+                  <a
+                    data-goto=".wrapper"
+                    href="#"
+                    class="menu__link active-link"
+                    >Home</a
+                  >
                 </li>
                 <li class="menu-header__item menu__item">
                   <a data-goto=".Shop" href="#" class="menu__link">Shop</a>
@@ -36,15 +45,32 @@
                 </li>
               </ul>
               <div class="header__actions-hide">
-                <a href="#" class="actions-header__item actions-header__cart icon-busket"></a>
-                <a href="#" class="actions-header__item actions-header__login icon-logout">Login</a>
+                <a
+                  href="#"
+                  class="actions-header__item actions-header__cart icon-busket"
+                ></a>
+                <a
+                  href="#"
+                  class="button actions-header__item actions-header__login icon-logout"
+                  >Login</a
+                >
               </div>
             </nav>
           </div>
           <div class="header__actions actions-header">
-            <a href="#" class="actions-header__item actions-header__search icon-search"></a>
-            <a href="#" class="actions-header__item actions-header__cart-hide icon-busket"></a>
-            <a href="#" class="actions-header__login actions-header__login-hide icon-logout">Login</a>
+            <a
+              href="#"
+              class="actions-header__item actions-header__search icon-search"
+            ></a>
+            <a
+              href="#"
+              class="actions-header__item actions-header__cart-hide icon-busket"
+            ></a>
+            <a
+              href="#"
+              class="button actions-header__login actions-header__login-hide icon-logout"
+              >Login</a
+            >
           </div>
           <div class="header__button">
             <button type="button" class="menu__icon icon-menu">
@@ -54,15 +80,130 @@
         </div>
       </header>
       <main class="main">
-        <div class="main__container"></div>
+        <section class="hero">
+          <div class="hero__container">
+            <div class="hero__slider swiper-container swiper">
+              <div class="hero__wrapper swiper-wrapper">
+                <div class="hero__slide slide-hero swiper-slide">
+                  <div class="slide-hero__container">
+                    <div class="slide-hero__content">
+                      <div class="slide-hero__label">Welcome to GreenShop</div>
+                      <div class="slide-hero__body">
+                        <h1 class="slide-hero__title">
+                          Let’s Make a <br/>Better <span>Planet</span>
+                        </h1>
+
+                        <div class="slide-hero__text">
+                          <p>
+                            We are an online plant shop offering a wide range of
+                            cheap and trendy plants. Use our plants to create an
+                            unique Urban Jungle. Order your favorite plants!
+                          </p>
+                        </div>
+                      </div>
+                      <a href="#" class="slide-hero__link button">SHOP NOW</a>
+                    </div>
+                  </div>
+                  <figure class="slide-hero__picture">
+                    <div class="slide-hero__images-box">
+                      <!-- Обертка для большой картинки -->
+                      <div class="slide-hero__big-wrap">
+                        <img
+                          src="./images/hero/main-big.png"
+                          alt="slide-hero"
+                          class="slide-hero__image-big"
+                        />
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+                <div class="hero__slide slide-hero swiper-slide">
+                  <div class="slide-hero__container">
+                    <div class="slide-hero__content">
+                      <div class="slide-hero__label">Welcome to GreenShop</div>
+                      <div class="slide-hero__body">
+                        <h2 class="slide-hero__title">
+                          Let’s Make a <br />
+                          Better <span>Planet</span>
+                        </h2>
+
+                        <div class="slide-hero__text">
+                          <p>
+                            We are an online plant shop offering a wide range of
+                            cheap and trendy plants. Use our plants to create an
+                            unique Urban Jungle. Order your favorite plants!
+                          </p>
+                        </div>
+                      </div>
+                      <a href="#" class="slide-hero__link button">SHOP NOW</a>
+                    </div>
+                  </div>
+                  <figure class="slide-hero__picture">
+                    <div class="slide-hero__images-box">
+                      <!-- Обертка для большой картинки -->
+                      <div class="slide-hero__big-wrap">
+                        <img
+                          src="./images/hero/main-big.png"
+                          alt="slide-hero"
+                          class="slide-hero__image-big"
+                        />
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+                <div class="hero__slide slide-hero swiper-slide">
+                  <div class="slide-hero__container">
+                    <div class="slide-hero__content">
+                      <div class="slide-hero__label">Welcome to GreenShop</div>
+                      <div class="slide-hero__body">
+                        <h2 class="slide-hero__title">
+                          Let’s Make a <br />
+                          Better <span>Planet</span>
+                        </h2>
+
+                        <div class="slide-hero__text">
+                          <p>
+                            We are an online plant shop offering a wide range of
+                            cheap and trendy plants. Use our plants to create an
+                            unique Urban Jungle. Order your favorite plants!
+                          </p>
+                        </div>
+                      </div>
+                      <a href="#" class="slide-hero__link button">SHOP NOW</a>
+                    </div>
+                  </div>
+                  <figure class="slide-hero__picture">
+                    <div class="slide-hero__images-box">
+                      <!-- Обертка для большой картинки -->
+                      <div class="slide-hero__big-wrap">
+                        <img
+                          src="./images/hero/main-big.png"
+                          alt="slide-hero"
+                          class="slide-hero__image-big"
+                        />
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+                
+              </div>
+							<div class="hero-controlls controlls-hero">
+              <div
+                class="controlls-hero__bullets bullets-hero swiper-pagination"
+              ></div>
+            </div>
+            </div>
+          </div>
+        </section>
       </main>
       <footer class="footer">
         <div class="footer__container"></div>
       </footer>
     </div>
     <script src="js/components/burger.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-	<script src="js/components/slider_swiper.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/components/slider_swiper.js"></script>
+    <script src="js/components/float-head.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
 </html>

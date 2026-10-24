@@ -3,10 +3,10 @@
 let myImageSlider = new
 	Swiper(".swiper-container", {
 		// Стрелки
-		navigation: {
-			nextEl: ".portfolio__arrow_right",
-			prevEl: ".portfolio__arrow_left",
-		},
+		// navigation: {
+		// 	nextEl: ".portfolio__arrow_right",
+		// 	prevEl: ".portfolio__arrow_left",
+		// },
 		// Включение/отключение перетаскивания на пк
 		simulateTouch: true,
 		// Чувствительность свайпа
@@ -33,68 +33,65 @@ let myImageSlider = new
 			pageUpDown: true,
 		},
 		// Количество слайдов для показа
-		slidesPerView: 3,
+		slidesPerView: 1,
 
 		// Отключение функционала, если слайдов меньше, чем нужно
 		watchOverflow: true,
 
 		// Отступ между слайдами
-		spaceBetween: 56,
+		spaceBetween: 30,
 
 		// Количество пролистываемых слайдов
 		slidesPerGroup: 1,
 
 		// Активный слайд по центру
-		// centeredSlides: true,
+		centeredSlides: true,
 
 		// Стартовый слайд
-		initialSlide: 0,
+		initialSlide: 1,
 
 		// Мультирядность
 		// slidesPerColumn: 1,
 
 		// Бесконечный слайдер
-		// loop: true,
+		loop: true,
 
 		// Количество дублирующих слайдов
 		// loopedSlides: 0,
 		// Скорость
 		speed: 800,
 		// Брейк поинты (Адаптивность) ширины экрана
-		breakpoints: {
-			320: {
-				slidesPerView: 1,
-				spaceBetween: 10,
-				// autoHeight: true,
-			},
-			480: {
-				slidesPerView: 2,
-				spaceBetween: 20,
-			},
-			992: {
-				slidesPerView: 3,
-				spaceBetween: 20,
-			},
-			1200: {
-				slidesPerView: 3,
-				spaceBetween: 56,
-			},
-		},
+		// breakpoints: {
+		// 	320: {
+		// 		slidesPerView: 1,
+		// 		spaceBetween: 10,
+		// 		// autoHeight: true,
+		// 	},
+		// 	480: {
+		// 		slidesPerView: 2,
+		// 		spaceBetween: 20,
+		// 	},
+		// 	992: {
+		// 		slidesPerView: 3,
+		// 		spaceBetween: 20,
+		// 	},
+		// 	1200: {
+		// 		slidesPerView: 3,
+		// 		spaceBetween: 56,
+		// 	},
+		// },
 		// Автовысота
 		// autoHeight: true,
 		// Навигация
 		// Буллеты,текущее положение. прогрессбар
-		// pagination: {
-		//   el: ".swiper-pagination",
+		pagination: {
+		  el: ".swiper-pagination",
 
-		//   // Буллеты
-		//   clickable: true,
-		//   // Динамические буллеты
-		//   dynamicBullets: true,
-		//   // Кастомные буллеты
-		//   renderBullet: function (index, className) {
-		//     return '<span class="' + className + '">' + (index + 1) + '</span>';
-		//   },
+		  // Буллеты
+		  clickable: true,
+		  // Динамические буллеты
+		  dynamicBullets: true,
+		  },
 
 
 		// Фракция
