@@ -273,12 +273,10 @@ body {
 .hero {
 	@include adaptive-value("padding-top", 90, 80, 0);
 	padding-bottom: 1.875rem;
-	@media (max-width: 47.9988rem) {
-		padding-top: 7.5rem;
-	}
+
 	&__container {
 		position: relative;
-		padding-bottom: 2.125rem; // Освобождаем место внизу для буллетов
+		padding-block: 2.125rem; // Освобождаем место внизу для буллетов
 		background: linear-gradient(97.77deg, rgba(245, 245, 245, 0.5) -23.46%, rgba(245, 245, 245, 0.5) 107.51%);
 	}
 
@@ -303,6 +301,7 @@ body {
 		text-align: center;
 	}
 	&__container {
+		
 		@media (min-width: 47.9988rem) {
 			padding-right: 0;
 			@include adaptive-value("padding-left", 40, 0, 0);
