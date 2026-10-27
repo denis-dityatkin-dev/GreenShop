@@ -646,6 +646,15 @@ body {
     flex-direction: column;
   }
 }
+.catalog__products {
+  display: grid;
+  /* По умолчанию 3 колонки равной ширины */
+  grid-template-columns: repeat(3, 1fr);
+  /* Отступы между карточками (подберите под ваш дизайн, например 30px) */
+  gap: 30px;
+  /* Чтобы карточки не растягивались больше нужного */
+  justify-content: center;
+}
 .filter-catalog {
   background-color: var(--background-catalog);
   padding-block: 0.875rem;
@@ -740,4 +749,48 @@ body {
   font-weight: 700;
   font-size: 1.4375rem;
   color: var(--text-header);
+}
+.control-catalog {
+  display: flex;
+  gap: 1.25rem;
+}
+.control-catalog__filter {
+  display: flex;
+  gap: calc(20px + 17 * (100vw - 320px) / 1120);
+}
+.product-card {
+  /* Задаем фиксированную ширину и высоту из макета */
+  width: 258px;
+  height: 300px;
+  /* Делаем карточку флекс-контейнером, чтобы картинка и текст встали друг под другом */
+  display: flex;
+  flex-direction: column;
+  /* Цвет фона из макета (Inspest Styles) */
+  background-color: #fbfbfb;
+  /* Обнуляем стандартные отступы браузера, если нужно */
+  padding: 0;
+  margin: 0 auto; /* Центрируем карточку внутри ячейки грида */
+  /* Скрываем все, что выходит за края (например, бейдж SALE) */
+  overflow: hidden;
+  position: relative; /* Чтобы позиционировать бейдж со скидкой */
+}
+/* Для планшетов (например, экраны до 992px) */
+@media (max-width: 992px) {
+  .catalog__products {
+    /* Делаем 2 колонки */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Для мобильных телефонов (экраны до 576px) */
+@media (max-width: 576px) {
+  .catalog__products {
+    /* Делаем 1 колонку */
+    grid-template-columns: 1fr;
+  }
+  .product-card {
+    /* На мобилках карточку можно сделать резиновой на всю ширину экрана, 
+       чтобы она не была прибита к левому краю, если экран уже 258px */
+    width: 100%;
+    max-width: 258px;
+  }
 }
