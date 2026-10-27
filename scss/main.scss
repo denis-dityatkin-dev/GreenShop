@@ -13,6 +13,7 @@ $maxWidthContainer: 1230;
 	--text-header: #3d3d3d;
 	--green: #46a358;
 	--white: #fff;
+	--background-catalog: #fbfbfb;
 	// --text-primary: #db574d;
 	// --text-muted: rgba(16, 16, 16, 0.6);
 	// --text-inverse: #fff;
@@ -301,7 +302,6 @@ body {
 		text-align: center;
 	}
 	&__container {
-		
 		@media (min-width: 47.9988rem) {
 			padding-right: 0;
 			@include adaptive-value("padding-left", 40, 0, 0);
@@ -446,8 +446,8 @@ body {
 	pointer-events: none; // Чтобы клики проходили сквозь пустую область к буллетам
 
 	@media (max-width: 47.9988rem) {
-			bottom: 0rem;
-		}
+		bottom: 0rem;
+	}
 }
 
 .controlls-hero {
@@ -457,7 +457,6 @@ body {
 		align-items: center;
 		gap: 0.5rem;
 		pointer-events: auto; // Возвращаем кликабельность самим буллетам
-		
 	}
 }
 
@@ -487,5 +486,251 @@ body {
 		// Если хотите овальный активный буллет, раскомментируйте:
 		// width: 1rem !important;
 		// border-radius: 0.25rem !important;
+	}
+}
+
+// ========= catalog =========
+
+.catalog {
+	&__container {
+	}
+
+	&__body {
+		display: flex;
+		@include adaptive-value("gap", 50, 30, 0);
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+		}
+	}
+
+	&__filter {
+	}
+
+	&__content {
+	}
+
+	&__control {
+	}
+
+	&__products {
+	}
+
+	&__footer {
+	}
+
+	&__pagging {
+	}
+}
+.filter-catalog {
+	background-color: var(--background-catalog);
+	padding-block: 0.875rem;
+	padding-inline: 1.25rem;
+	&__items {
+		display: grid;
+		@include adaptive-value("gap", 46, 10, 0);
+
+	}
+
+	&__item {
+	}
+
+	&__price {
+	}
+}
+.item-filter-catalog {
+	&__title {
+		font-weight: 700;
+		font-size: 1.125rem;
+		line-height: 0.89;
+		color: var(--text-header);
+		&:not(:last-child) {
+			@include adaptive-value("margin-bottom", 20, 15, 0);
+		}
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.25rem;
+		cursor: default;
+		position: relative;
+		._init & {
+			cursor: pointer;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0.625rem;
+				top: 50%;
+				background-color: var(--text-header);
+				height: 0.125rem;
+				width: 0.625rem;
+				transition: transform 0.5s ease 0s;
+			}
+			&::before {
+				transform: translate(-75%, -50%) rotate(40deg);
+			}
+			&::after {
+				transform: translate(0, -50%) rotate(-40deg);
+			}
+			&._active {
+				&::before {
+					transform: translateX(-75%) rotate(-40deg);
+				}
+				&::after {
+					transform: rotate(40deg);
+				}
+			}
+		}
+	}
+
+	&__body {
+		@media (min-width: 47.9988rem) {
+			display: flex;
+			flex-direction: column;
+			@include adaptive-value("gap", 30, 15, 0);
+		}
+	}
+
+	&__category {
+	}
+}
+.category-catalog {
+	display: flex;
+	justify-content: space-between;
+	gap: 1.25rem;
+	color: var(--text-header);
+
+	transition:
+		color 0.5s,
+		text-shadow 0.5s;
+
+	&:hover {
+		color: var(--green);
+		text-shadow:
+			0 0 0.5px currentColor,
+			0 0 0.5px currentColor;
+	}
+	@media (min-width: 47.9988rem) {
+		padding-left: 0.625rem;
+	}
+	@media (max-width: 47.9988rem) {
+		&:not(:last-child) {
+			margin-bottom: 0.625rem;
+		}
+	}
+	&__title {
+	}
+
+	&__value {
+	}
+}
+.price-filter {
+	&__title {
+	}
+
+	&__body {
+	}
+
+	&__inputs {
+	}
+
+	&__input {
+	}
+
+	&__range {
+	}
+}
+.range {
+	&__values {
+	}
+
+	&__slider {
+		&-button {
+		}
+	}
+}
+.item-filter-banner {
+	display: grid;
+	gap: 0.9375rem;
+	text-align: center;
+	@media (max-width: 47.9988rem) {
+		display: none;
+	}
+	&__title {
+	}
+
+	&__text {
+		font-weight: 700;
+		font-size: 1.4375rem;
+		color: var(--text-header);
+	}
+
+	&__image {
+	}
+}
+.control-catalog {
+	&__filter {
+	}
+
+	&__filter-title {
+	}
+
+	&__sort {
+	}
+
+	&__sort-title {
+	}
+
+	&__sort-body {
+	}
+}
+.body-sort-catalog {
+	&__item {
+	}
+}
+.product-card {
+	&__image {
+	}
+
+	&__item-image {
+	}
+
+	&__body {
+	}
+
+	&__title {
+	}
+
+	&__link-title {
+	}
+
+	&__price {
+	}
+
+	&__sale {
+	}
+
+	&__price-new {
+	}
+
+	&__price-old {
+	}
+}
+.pagging {
+	&__arrow {
+		&_left {
+		}
+
+		&_right {
+		}
+	}
+
+	&__list {
+	}
+
+	&__item {
+	}
+
+	&__link {
 	}
 }
