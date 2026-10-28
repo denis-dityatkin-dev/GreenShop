@@ -735,6 +735,100 @@ body {
     margin-bottom: 0.625rem;
   }
 }
+/* --- Стили для фильтра --- */
+.price-filter__body {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.price-filter {
+  /* Скрываем текстовые инпуты, они не нужны визуально */
+}
+.price-filter__inputs {
+  display: none;
+}
+.price-filter__range {
+  padding: 0 0.625rem; /* Отступы по бокам, чтобы ползунки не прилипали к краям */
+}
+.price-filter {
+  /* Блок с ценой и кнопкой */
+}
+.price-filter__info {
+  margin-top: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem; /* Расстояние между текстом и кнопкой */
+}
+.price-filter__text {
+  color: var(--text-header);
+  line-height: 1.07;
+}
+.price-filter__text span {
+  font-weight: 700; /* Цена жирным */
+  color: var(--green);
+}
+
+/* --- Стили для кнопки --- */
+.range__slider-button {
+  background-color: var(--green); /* Зеленый цвет из макета */
+  color: var(--white);
+  border-radius: 0.375rem;
+  width: 5.625rem;
+  height: 2.1875rem;
+  font-weight: 700;
+  line-height: 125%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.range__slider-button:hover {
+  background-color: var(--white);
+  color: var(--green);
+  border: 0.0625rem solid var(--green);
+}
+
+/* --- Кастомизация noUiSlider (Слайдер) --- */
+/* --- Кастомизация noUiSlider --- */
+#range {
+  height: 0.25rem; /* Толщина линии */
+  background: rgba(70, 163, 88, 0.2); /* Серый цвет неактивной линии */
+  border-radius: 0.625rem;
+  border: none; /* Убираем возможные рамки */
+  margin-bottom: 1.875rem;
+  position: relative;
+  box-shadow: none; /* Убираем тени */
+  /* Соединительная линия (заливка между ползунками) */
+}
+#range .noUi-connect {
+  background: var(--green); /* Зеленый цвет */
+}
+#range {
+  /* Круглые ползунки */
+}
+#range .noUi-handle {
+  width: 1.3125rem !important; /* Принудительно задаем размер */
+  height: 1.3125rem !important;
+  border-radius: 50% !important; /* Делаем круглыми */
+  background: var(--green) !important; /* Зеленый цвет */
+  border: 3px solid var(--white); /* Убираем стандартную рамку */
+  box-shadow: none !important; /* Убираем тень */
+  cursor: grab;
+  top: -9px !important; /* Выравниваем по центру линии (6px => (20-6)/2 = 7px) */
+  right: -10px !important; /* Центрируем */
+  /* Убираем стандартные полоски внутри ручки */
+}
+#range .noUi-handle::before, #range .noUi-handle::after {
+  display: none !important;
+}
+#range .noUi-handle {
+  /* При нажатии */
+}
+#range .noUi-handle:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
 .item-filter-banner {
   display: grid;
   gap: 0.9375rem;
@@ -789,7 +883,7 @@ body {
   }
   .product-card {
     /* На мобилках карточку можно сделать резиновой на всю ширину экрана, 
-       чтобы она не была прибита к левому краю, если экран уже 258px */
+         чтобы она не была прибита к левому краю, если экран уже 258px */
     width: 100%;
     max-width: 258px;
   }

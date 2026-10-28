@@ -1,132 +1,63 @@
 const rangeSliderInit = () => {
-  // создаем функцию инициализации слайдера
-  const range = document.getElementById("range"); // Ищем слайдер
-  const inputMin = document.getElementById("min"); // Ищем input с меньшим значнием
-  const inputMax = document.getElementById("max"); // Ищем input с большим значнием
+  // 1. Находим элемент, куда будем выводить текст с ценой (под слайдером)
+  const rangeValuesText = document.getElementById("price-values");
 
-  const range2 = document.getElementById("range-2");
-  const inputMin2 = document.getElementById("min-2");
-  const inputMax2 = document.getElementById("max-2");
+  // 2. Функция для инициализации одного слайдера, чтобы не дублировать код 4 раза
+  const initSingleSlider = (rangeId, minId, maxId, startValues, maxValue) => {
+    const range = document.getElementById(rangeId);
+    const inputMin = document.getElementById(minId);
+    const inputMax = document.getElementById(maxId);
 
-  const range3 = document.getElementById("range-3");
-  const inputMin3 = document.getElementById("min-3");
-  const inputMax3 = document.getElementById("max-3");
+    // Если элементов нет на странице - выходим, чтобы не было ошибок
+    if (!range || !inputMin || !inputMax) return;
 
-  const range4 = document.getElementById("range-4");
-  const inputMin4 = document.getElementById("min-4");
-  const inputMax4 = document.getElementById("max-4");
+    const inputs = [inputMin, inputMax];
 
-  if (!range || !inputMin || !inputMax) return; // если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
-  if (!range2 || !inputMin2 || !inputMax2) return;
-  if (!range3 || !inputMin3 || !inputMax3) return;
-   if (!range4 || !inputMin4 || !inputMax4) return;
+    // Инициализация слайдера
+    noUiSlider.create(range, {
+      start: startValues,
+      connect: true,
+      range: {
+        min: 0,
+        max: maxValue,
+      },
+      step: 1,
+    });
 
-  const inputs = [inputMin, inputMax]; // создаем массив из меньшего и большего значения
-  const inputs2 = [inputMin2, inputMax2];
-  const inputs3 = [inputMin3, inputMax3];
-  const inputs4 = [inputMin4, inputMax4];
-  noUiSlider.create(range, {
-    // инициализируем слайдер
-    start: [39, 1230], // устанавливаем начальные значения
-    connect: true, // указываем что нужно показывать выбранный диапазон
-    range: {
-      // устанавливаем минимальное и максимальное значения
-      min: 0,
-      max: 2000,
-    },
-    step: 1, // шаг изменения значений
-  });
-  noUiSlider.create(range2, {
-    // инициализируем слайдер
-    start: [20, 100], // устанавливаем начальные значения
-    connect: true, // указываем что нужно показывать выбранный диапазон
-    range: {
-      // устанавливаем минимальное и максимальное значения
-      min: 0,
-      max: 100,
-    },
-    step: 1, // шаг изменения значений
-  });
-   noUiSlider.create(range3, {
-     // инициализируем слайдер
-     start: [30, 100], // устанавливаем начальные значения
-     connect: true, // указываем что нужно показывать выбранный диапазон
-     range: {
-       // устанавливаем минимальное и максимальное значения
-       min: 0,
-       max: 100,
-     },
-     step: 1, // шаг изменения значений
-   });
-   noUiSlider.create(range4, {
-     // инициализируем слайдер
-     start: [40, 100], // устанавливаем начальные значения
-     connect: true, // указываем что нужно показывать выбранный диапазон
-     range: {
-       // устанавливаем минимальное и максимальное значения
-       min: 0,
-       max: 100,
-     },
-     step: 1, // шаг изменения значений
-   });
+    // Обновление значений при движении ползунков
+    range.noUiSlider.on("update", function (values, handle) {
+      inputs[handle].value = parseInt(values[handle]);
 
-  range.noUiSlider.on("update", function (values, handle) {
-    // при изменений положения элементов управления слайдера изменяем соответствующие значения
-    inputs[handle].value = parseInt(values[handle]);
-  });
+      // Если это первый слайдер (цена) - обновляем текст под ним
+      if (rangeId === "range" && rangeValuesText) {
+        const val1 = Math.round(values[0]);
+        const val2 = Math.round(values[1]);
+        rangeValuesText.innerHTML = `$${val1} - $${val2}`;
+      }
+    });
 
-  range2.noUiSlider.on("update", function (values, handle) {
-    // при изменений положения элементов управления слайдера изменяем соответствующие значения
-    inputs2[handle].value = parseInt(values[handle]);
-  });
-   range3.noUiSlider.on("update", function (values, handle) {
-     // при изменений положения элементов управления слайдера изменяем соответствующие значения
-     inputs3[handle].value = parseInt(values[handle]);
-   });
-   range4.noUiSlider.on("update", function (values, handle) {
-     // при изменений положения элементов управления слайдера изменяем соответствующие значения
-     inputs4[handle].value = parseInt(values[handle]);
-   });
+    // Обновление слайдера при вводе в input (если они появятся)
+    inputMin.addEventListener("change", function () {
+      range.noUiSlider.set([this.value, null]);
+    });
 
-  inputMin.addEventListener("change", function () {
-    // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
-    range.noUiSlider.set([this.value, null]);
-  });
+    inputMax.addEventListener("change", function () {
+      range.noUiSlider.set([null, this.value]);
+    });
+  };
 
-  inputMin2.addEventListener("change", function () {
-    // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
-    range2.noUiSlider.set([this.value, null]);
-  });
-   inputMin3.addEventListener("change", function () {
-     // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
-     range3.noUiSlider.set([this.value, null]);
-   });
-   inputMin4.addEventListener("change", function () {
-     // при изменении меньшего значения в input - меняем положение соответствующего элемента управления
-     range4.noUiSlider.set([this.value, null]);
-   });
-
-  inputMax.addEventListener("change", function () {
-    // при изменении большего значения в input - меняем положение соответствующего элемента управления
-    range.noUiSlider.set([null, this.value]);
-  });
-
-  inputMax2.addEventListener("change", function () {
-    // при изменении большего значения в input - меняем положение соответствующего элемента управления
-    range2.noUiSlider.set([null, this.value]);
-  });
-  inputMax3.addEventListener("change", function () {
-    // при изменении большего значения в input - меняем положение соответствующего элемента управления
-    range3.noUiSlider.set([null, this.value]);
-  });
-  inputMax4.addEventListener("change", function () {
-    // при изменении большего значения в input - меняем положение соответствующего элемента управления
-    range4.noUiSlider.set([null, this.value]);
-  });
+  // 3. Запускаем инициализацию для всех нужных слайдеров
+  // Слайдер цены (макет)
+  initSingleSlider("range", "min", "max", [39, 1230], 1500);
+  
+  // Остальные слайдеры (если они есть на странице)
+  initSingleSlider("range-2", "min-2", "max-2", [20, 100], 100);
+  initSingleSlider("range-3", "min-3", "max-3", [30, 100], 100);
+  initSingleSlider("range-4", "min-4", "max-4", [40, 100], 100);
 };
 
 const init = () => {
-  rangeSliderInit(); // запускаем функцию инициализации слайдера
+  rangeSliderInit(); 
 };
 
-window.addEventListener("DOMContentLoaded", init); // запускаем функцию init, когда документ будет загружен и готов к взаимодействию
+window.addEventListener("DOMContentLoaded", init);

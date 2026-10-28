@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="fonts/font.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -247,36 +248,32 @@
                     </div>
                   </div>
 									 <div data-spollers="767.98" class="filter-catalog__item filter-catalog__price price-filter">
-                    <button
-                      type="button"
-                      data-spoller
-                      class="item-filter-catalog__title price-filter__title"
-                    >
-                      Price Range
-                    </button>
-                    <div class="price-filter__body">
-                      <div class="price-filter__inputs range__values">
-                        <input
-                          id="min"
-                          autocomplete="off"
-                          type="text"
-                          name="form[]"
-                          class="price-filter__input"
-                        />
-                        <input
-                          id="max"
-                          autocomplete="off"
-                          type="text"
-                          name="form[]"
-                          class="price-filter__input"
-                        />
-                      </div>
-                      <div class="price-filter__range range__slider">
-                        <div id="range">Price: <span>$39 - $1230</span></div>
-                        <button type="button" class="range__slider-button">Filter</button>
-                      </div>
-                    </div>
-                  </div>
+										<button
+											type="button"
+											data-spoller
+											class="item-filter-catalog__title price-filter__title"
+										>
+											Price Range
+										</button>
+										<div class="price-filter__body">
+											<div class="price-filter__inputs range__values">
+												<!-- Скрываем инпуты, так как по макету их не видно, они нужны только для формы -->
+												<input id="min" autocomplete="off" type="text" name="form[]" class="price-filter__input" />
+												<input id="max" autocomplete="off" type="text" name="form[]" class="price-filter__input" />
+											</div>
+											
+											<div class="price-filter__range range__slider">
+												<!-- Сам слайдер должен быть пустым -->
+												<div id="range"></div>
+												
+												<!-- Текст и кнопка идут отдельно -->
+												<div class="price-filter__info">
+													<span class="price-filter__text">Price: <span id="price-values">$39 - $1230</span></span>
+													<button type="button" class="range__slider-button">Filter</button>
+												</div>
+											</div>
+										</div>
+									</div>
 									<div data-spollers="767.98" class="filter-catalog__item item-filter-catalog">
                     <button
                       type="button"
@@ -542,6 +539,7 @@
     <script src="js/components/slider_swiper.js"></script>
     <script src="js/components/float-head.js"></script>
     <script src="js/components/spoller.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="js/range.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
