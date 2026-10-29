@@ -646,6 +646,9 @@ body {
     flex-direction: column;
   }
 }
+.catalog__content {
+  display: grid;
+}
 .catalog__products {
   display: grid;
   /* По умолчанию 3 колонки равной ширины */
@@ -789,7 +792,6 @@ body {
 }
 
 /* --- Кастомизация noUiSlider (Слайдер) --- */
-/* --- Кастомизация noUiSlider --- */
 #range {
   height: 0.25rem; /* Толщина линии */
   background: rgba(70, 163, 88, 0.2); /* Серый цвет неактивной линии */
@@ -846,12 +848,112 @@ body {
 }
 .control-catalog {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1.25rem;
+  margin-bottom: 2rem;
 }
 .control-catalog__filter {
   display: flex;
   gap: calc(20px + 17 * (100vw - 320px) / 1120);
+  align-items: center;
 }
+.control-catalog__filter-title {
+  transition: color 0.3s;
+}
+.control-catalog__filter-title:hover {
+  color: var(--green);
+}
+.control-catalog__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.control-catalog__sort-label {
+  color: var(--text-default);
+}
+
+/* ==== Стили для кастомного селекта ==== */
+.sort-select {
+  position: relative;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--text-header);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.sort-select__title {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: inherit;
+  font-weight: 400;
+  transition: color 0.3s;
+  padding-right: 1.25rem;
+  position: relative;
+}
+.sort-select__title::before, .sort-select__title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  background-color: var(--text-header);
+  height: 0.125rem;
+  width: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+.sort-select__title::before {
+  transform: translate(-50%, -50%) rotate(40deg);
+}
+.sort-select__title::after {
+  transform: translate(0, -50%) rotate(-40deg);
+}
+.sort-select__body {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  background-color: var(--white);
+  box-shadow: 0px 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.625rem);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.sort-select .body-sort-catalog__item {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+.sort-select .body-sort-catalog__item:hover {
+  background-color: var(--background-catalog);
+  color: var(--green);
+}
+.sort-select {
+  /* === Состояние ОТКРЫТО === */
+}
+.sort-select._active .sort-select__title {
+  color: var(--green);
+}
+.sort-select._active .sort-select__title::before {
+  transform: translate(-50%, -50%) rotate(-40deg);
+  background-color: var(--green);
+}
+.sort-select._active .sort-select__title::after {
+  transform: translate(0, -50%) rotate(40deg);
+  background-color: var(--green);
+}
+.sort-select._active .sort-select__body {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .product-card {
   /* Задаем фиксированную ширину и высоту из макета */
   width: 258px;

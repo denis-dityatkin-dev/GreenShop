@@ -308,28 +308,36 @@
 									</div>
                 </div>
               </div>
-              <a class="catalog__content">
-                <a class="catalog__control control-catalog">
-									<div class="control-catalog__filter">
-										<a href="#" class="control-catalog__filter-title">All Plants</a>
-										<a href="#" class="control-catalog__filter-title">New Arrivals</a>
-										<a href="#" class="control-catalog__filter-title">Sale</a>
-									</div>
-									<div class="control-catalog__sort">
-										<div class="control-catalog__sort-title">Short by:</div>
-										<div class="control-catalog__sort-body body-sort-catalog">
-											<div class="body-sort-catalog__item">Default sorting</div>
-											<div class="body-sort-catalog__item">Price up</div>
-											<div class="body-sort-catalog__item">Price down</div>
+              <div class="catalog__content">
+								<div class="catalog__control control-catalog">
+										<div class="control-catalog__filter">
+											<a href="#" class="control-catalog__filter-title">All Plants</a>
+											<a href="#" class="control-catalog__filter-title">New Arrivals</a>
+											<a href="#" class="control-catalog__filter-title">Sale</a>
 										</div>
+									<!-- Обертка для всего блока сортировки -->
+									<div class="control-catalog__sort">
+											
+											<!-- Текст "Short by:" -->
+											<div class="control-catalog__sort-label">Short by:</div>
+
+											<!-- Сам выпадающий список -->
+											<div class="sort-select">
+													<!-- Кнопка, которая открывает список. По умолчанию в span стоит Default sorting -->
+													<button type="button" class="sort-select__title">
+															<span class="sort-select__current">Default sorting</span>
+													</button>
+													
+													<!-- Скрытый по умолчанию список -->
+													<div class="sort-select__body body-sort-catalog">
+															<div class="body-sort-catalog__item">Default sorting</div>
+															<div class="body-sort-catalog__item">Price up</div>
+															<div class="body-sort-catalog__item">Price down</div>
+													</div>
+											</div>
+											
 									</div>
-                  <!-- <select name="form[]" class="form-select">
-                    <option value="1" selected>По популярности</option>
-                    <option value="2">По названию</option>
-                    <option value="3">От дешевых к дорогим</option>
-                    <option value="4">От дорогих к дешевым</option>
-                  </select> -->
-                </div>
+								</div>
                 <div class="catalog__products">
                   <article class="product-card">
                     <a href="product.html" class="product-card__image">
@@ -541,6 +549,7 @@
     <script src="js/components/spoller.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="js/range.js"></script>
+    <script src="js/select.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
 </html>
