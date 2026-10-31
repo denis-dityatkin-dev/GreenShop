@@ -1,8 +1,8 @@
 "use strict"
-// Споллеры
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 const spollersArray = document.querySelectorAll('[data-spollers]');
 if (spollersArray.length > 0) {
-  // Получение обычных споллеров
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   const spollersRegular = Array.from(spollersArray).filter(function (
     item,
     index,
@@ -10,11 +10,11 @@ if (spollersArray.length > 0) {
   ) {
     return !item.dataset.spollers.split(",")[0];
   });
-  // Инициализация обычных споллеров
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if (spollersRegular.length > 0) {
     initSpollers(spollersRegular);
   }
-  // Получение спойлеров с медиа запросами
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   const spollersMedia = Array.from(spollersArray).filter(function (
     item,
     index,
@@ -22,7 +22,7 @@ if (spollersArray.length > 0) {
   ) {
     return item.dataset.spollers.split(",")[0];
   });
-  // Инициализация спойлеров с медиа запросами
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   if (spollersMedia.length > 0) {
     const breakpointsArray = [];
     spollersMedia.forEach(item => {
@@ -34,33 +34,33 @@ if (spollersArray.length > 0) {
       breakpoint.item = item;
       breakpointsArray.push(breakpoint);
     });
-    // Получаем уникальные брейкпоинты
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     let mediaQueries = breakpointsArray.map(function (item) {
       return '(' + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
     });
     mediaQueries = mediaQueries.filter(function (item, index, self) {
       return self.indexOf(item) === index;
     });
-    // Работаем с каждым брейкпоинтом
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     mediaQueries.forEach(breakpoint => {
       const paramsArray = breakpoint.split(",");
       const mediaBreakpoint = paramsArray[1];
       const mediaType = paramsArray[2];
       const matchMedia = window.matchMedia(paramsArray[0]);
-      // Объекты с нужными условиями
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       const spollersArray = breakpointsArray.filter(function (item) {
         if (item.value === mediaBreakpoint && item.type === mediaType) {
           return true;
         }
       });
-      // Событие
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       matchMedia.addListener(function () {
         initSpollers(spollersArray, matchMedia);
       });
       initSpollers(spollersArray, matchMedia);
     });
   }
-  // Инициализация
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   function initSpollers(spollersArray, matchMedia = false) {
     spollersArray.forEach(spollersBlock => {
       spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
@@ -75,7 +75,7 @@ if (spollersArray.length > 0) {
       }
     });
   }
-  // Работа с контентом
+  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
   function initSpollerBody(spollersBlock, hideSpollerBody = true) {
     const spollerTitle = spollersBlock.querySelectorAll('[data-spoller]');
     if (spollerTitle.length > 0) {
@@ -182,3 +182,42 @@ let _slideToggle = (target, duration = 500) => {
     return _slideUp(target, duration);
   }
 }
+
+/* ================================================================
+   Р”РћР‘РђР’Р›Р•РќРќР«Р™ РљРћР”: Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё (Sort Select)
+   ================================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+    const sortSelect = document.getElementById('sort-select');
+    
+    // Р•СЃР»Рё РЅР° СЃС‚СЂР°РЅРёС†Рµ РЅРµС‚ Р±Р»РѕРєР° СЃРѕСЂС‚РёСЂРѕРІРєРё, РїСЂРѕСЃС‚Рѕ РІС‹С…РѕРґРёРј, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РѕС€РёР±РѕРє
+    if (!sortSelect) return;
+
+    const sortTitle = sortSelect.querySelector('.sort-select__title .sort-select__current');
+    const sortBody = sortSelect.querySelector('.sort-select__body');
+    const sortItems = sortSelect.querySelectorAll('.body-sort-catalog__item');
+
+    // 1. РћС‚РєСЂС‹С‚РёРµ / Р—Р°РєСЂС‹С‚РёРµ СЃРїРёСЃРєР° РїРѕ РєР»РёРєСѓ РЅР° РєРЅРѕРїРєСѓ
+    sortSelect.querySelector('.sort-select__title').addEventListener('click', (e) => {
+        e.stopPropagation(); // РџСЂРµРґРѕС‚РІСЂР°С‰Р°РµРј РІСЃРїР»С‹С‚РёРµ, С‡С‚РѕР±С‹ РєР»РёРє РЅРµ Р·Р°РєСЂС‹РІР°Р» РјРµРЅСЋ СЃСЂР°Р·Сѓ Р¶Рµ
+        sortSelect.classList.toggle('is-open');
+    });
+
+    // 2. Р—Р°РєСЂС‹С‚РёРµ СЃРїРёСЃРєР° РїСЂРё РєР»РёРєРµ РІ Р»СЋР±РѕРј РґСЂСѓРіРѕРј РјРµСЃС‚Рµ СЃС‚СЂР°РЅРёС†С‹
+    document.addEventListener('click', (e) => {
+        if (!sortSelect.contains(e.target)) {
+            sortSelect.classList.remove('is-open');
+        }
+    });
+
+    // 3. Р›РѕРіРёРєР° РІС‹Р±РѕСЂР° РїСѓРЅРєС‚Р° СЃРѕСЂС‚РёСЂРѕРІРєРё
+    sortItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // РњРµРЅСЏРµРј С‚РµРєСЃС‚ РЅР° РІС‹Р±СЂР°РЅРЅС‹Р№
+            if (sortTitle) {
+                sortTitle.textContent = this.textContent;
+            }
+            // Р—Р°РєСЂС‹РІР°РµРј РјРµРЅСЋ (СѓР±РёСЂР°РµРј РєР»Р°СЃСЃ Сѓ СЂРѕРґРёС‚РµР»СЏ)
+            sortSelect.classList.remove('is-open');
+        });
+    });
+});

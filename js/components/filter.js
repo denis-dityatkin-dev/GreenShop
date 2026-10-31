@@ -1,47 +1,92 @@
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  // Добавить класс "show" (display:block) к отфильтрованным элементам и удалите класс "show" из элементов, которые не выбраны
-  for (i = 0; i < x.length; i++) {
-    sw3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) sw3AddClass(x[i], "show");
-  }
-}
+document.addEventListener("DOMContentLoaded", () => {
+    
+    /* ==========================================
+       1. РџР•Р Р•РњР•РќРќР«Р• Р Р­Р›Р•РњР•РќРўР«
+       ========================================== */
+    const filterButtons = document.querySelectorAll('.control-catalog__filter-title');
+    const productContainer = document.getElementById('product-container');
+    const productCards = productContainer.querySelectorAll('.product-card');
+    
+    const sortSelect = document.getElementById('sort-select');
+    const sortTitle = sortSelect.querySelector('.sort-select__title .sort-select__current');
+    const sortBody = sortSelect.querySelector('.sort-select__body');
+    const sortItems = sortSelect.querySelectorAll('.body-sort-catalog__item');
 
-// Показать отфильтрованные элементы
-function sw3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
+    let currentFilter = 'all';
+
+    /* ==========================================
+       2. Р›РћР“РРљРђ Р¤РР›Р¬РўР РђР¦РР
+       ========================================== */
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); 
+
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            currentFilter = this.getAttribute('data-filter');
+            applyFilter(currentFilter);
+        });
+    });
+
+    function applyFilter(filterValue) {
+        productCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (filterValue === 'all' || filterValue === cardCategory) {
+                card.classList.remove('is-hidden');
+            } else {
+                card.classList.add('is-hidden');
+            }
+        });
     }
-  }
-}
 
-// Скрыть элементы, которые не выбраны
-function sw3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
-}
+    /* ==========================================
+       3. Р›РћР“РРљРђ РЎРћР РўРР РћР’РљР
+       ========================================== */
+    sortSelect.querySelector('.sort-select__title').addEventListener('click', () => {
+        sortBody.classList.toggle('is-open');
+    });
 
-// Добавить активный класс к текущей кнопке управления (выделите ее)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
+    document.addEventListener('click', (e) => {
+        if (!sortSelect.contains(e.target)) {
+            sortBody.classList.remove('is-open');
+        }
+    });
+
+    sortItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const sortType = this.getAttribute('data-sort');
+            sortTitle.textContent = this.textContent;
+            sortBody.classList.remove('is-open');
+
+            const sortedCards = Array.from(productCards);
+
+            sortedCards.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
+
+                if (sortType === 'price-up') {
+                    return priceA - priceB;
+                } else if (sortType === 'price-down') {
+                    return priceB - priceA;
+                } else {
+                    return a.getAttribute('data-index') - b.getAttribute('data-index');
+                }
+            });
+
+            productContainer.innerHTML = '';
+            sortedCards.forEach(card => {
+                productContainer.appendChild(card);
+            });
+
+            // РџСЂРёРјРµРЅСЏРµРј С„РёР»СЊС‚СЂ Р·Р°РЅРѕРІРѕ РїРѕСЃР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё
+            applyFilter(currentFilter);
+        });
+    });
+
+    // РЎРѕС…СЂР°РЅСЏРµРј РёСЃС…РѕРґРЅС‹Р№ РїРѕСЂСЏРґРѕРє РєР°СЂС‚РѕС‡РµРє
+    productCards.forEach((card, index) => {
+        card.setAttribute('data-index', index);
+    });
+});

@@ -9,7 +9,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css"
+    />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="fonts/font.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -200,151 +203,248 @@
             <div class="catalog__body">
               <div class="catalog__filter filter-catalog">
                 <div class="filter-catalog__items">
-                  <div data-spollers="767.98" class="filter-catalog__item item-filter-catalog">
+                  <div
+                    data-spollers="767.98"
+                    class="filter-catalog__item item-filter-catalog"
+                  >
                     <button
                       type="button"
                       data-spoller
-                      class="item-filter-catalog__title "
+                      class="item-filter-catalog__title"
                     >
                       Categories
                     </button>
                     <div class="item-filter-catalog__body">
-                      <a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">House Plants</div>
-												<div class="category-catalog__value">(33)</div>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">House Plants</div>
+                        <div class="category-catalog__value">(33)</div>
                       </a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Potter Plants</div>
-												<div class="category-catalog__value">(12)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Seeds</div>
-												<div class="category-catalog__value">(65)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Small Plants</div>
-												<div class="category-catalog__value">(39)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Big Plants</div>
-												<div class="category-catalog__value">(23)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Succulents</div>
-												<div class="category-catalog__value">(17)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Trerrariums</div>
-												<div class="category-catalog__value">(19)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-													<div class="category-catalog__title">Gardening</div>
-												<div class="category-catalog__value">(13)</div>
-											</a>
-											<a	href="#" class="item-filter-catalog__category category-catalog">
-											<div class="category-catalog__title">Accessories</div>
-												<div class="category-catalog__value">(18)</div>
-											</a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Potter Plants</div>
+                        <div class="category-catalog__value">(12)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Seeds</div>
+                        <div class="category-catalog__value">(65)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Small Plants</div>
+                        <div class="category-catalog__value">(39)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Big Plants</div>
+                        <div class="category-catalog__value">(23)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Succulents</div>
+                        <div class="category-catalog__value">(17)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Trerrariums</div>
+                        <div class="category-catalog__value">(19)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Gardening</div>
+                        <div class="category-catalog__value">(13)</div>
+                      </a>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Accessories</div>
+                        <div class="category-catalog__value">(18)</div>
+                      </a>
                     </div>
                   </div>
-									 <div data-spollers="767.98" class="filter-catalog__item filter-catalog__price price-filter">
-										<button
-											type="button"
-											data-spoller
-											class="item-filter-catalog__title price-filter__title"
-										>
-											Price Range
-										</button>
-										<div class="price-filter__body">
-											<div class="price-filter__inputs range__values">
-												<!-- Скрываем инпуты, так как по макету их не видно, они нужны только для формы -->
-												<input id="min" autocomplete="off" type="text" name="form[]" class="price-filter__input" />
-												<input id="max" autocomplete="off" type="text" name="form[]" class="price-filter__input" />
-											</div>
-											
-											<div class="price-filter__range range__slider">
-												<!-- Сам слайдер должен быть пустым -->
-												<div id="range"></div>
-												
-												<!-- Текст и кнопка идут отдельно -->
-												<div class="price-filter__info">
-													<span class="price-filter__text">Price: <span id="price-values">$39 - $1230</span></span>
-													<button type="button" class="range__slider-button">Filter</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div data-spollers="767.98" class="filter-catalog__item item-filter-catalog">
+                  <div
+                    data-spollers="767.98"
+                    class="filter-catalog__item filter-catalog__price price-filter"
+                  >
                     <button
                       type="button"
                       data-spoller
-                      class="item-filter-catalog__title "
+                      class="item-filter-catalog__title price-filter__title"
+                    >
+                      Price Range
+                    </button>
+                    <div class="price-filter__body">
+                      <div class="price-filter__inputs range__values">
+                        <!-- Скрываем инпуты, так как по макету их не видно, они нужны только для формы -->
+                        <input
+                          id="min"
+                          autocomplete="off"
+                          type="text"
+                          name="form[]"
+                          class="price-filter__input"
+                        />
+                        <input
+                          id="max"
+                          autocomplete="off"
+                          type="text"
+                          name="form[]"
+                          class="price-filter__input"
+                        />
+                      </div>
+
+                      <div class="price-filter__range range__slider">
+                        <!-- Сам слайдер должен быть пустым -->
+                        <div id="range"></div>
+
+                        <!-- Текст и кнопка идут отдельно -->
+                        <div class="price-filter__info">
+                          <span class="price-filter__text"
+                            >Price:
+                            <span id="price-values">$39 - $1230</span></span
+                          >
+                          <button type="button" class="range__slider-button">
+                            Filter
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    data-spollers="767.98"
+                    class="filter-catalog__item item-filter-catalog"
+                  >
+                    <button
+                      type="button"
+                      data-spoller
+                      class="item-filter-catalog__title"
                     >
                       Size
                     </button>
                     <div class="item-filter-catalog__body">
-                      <a href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Small</div>
-												<div class="category-catalog__value">(119)</div>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Small</div>
+                        <div class="category-catalog__value">(119)</div>
                       </a>
-                      <a href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Medium</div>
-												<div class="category-catalog__value">(86)</div>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Medium</div>
+                        <div class="category-catalog__value">(86)</div>
                       </a>
-                      <a href="#" class="item-filter-catalog__category category-catalog">
-												<div class="category-catalog__title">Large</div>
-												<div class="category-catalog__value">(78)</div>
+                      <a
+                        href="#"
+                        class="item-filter-catalog__category category-catalog"
+                      >
+                        <div class="category-catalog__title">Large</div>
+                        <div class="category-catalog__value">(78)</div>
                       </a>
                     </div>
                   </div>
-									<div class="filter-catalog__item item-filter-banner">
-										<div class="item-filter-banner__title">
-											<img src="./images/catalog/sale.svg" alt="banner">
-										</div>
-										<div class="item-filter-banner__text">UP TO 75% OFF</div>
-										<div class="item-filter-banner__image">
-											<img src="./images/catalog/flower.png" alt="banner">
-										</div>
-									</div>
+                  <div class="filter-catalog__item item-filter-banner">
+                    <div class="item-filter-banner__title">
+                      <img src="./images/catalog/sale.svg" alt="banner" />
+                    </div>
+                    <div class="item-filter-banner__text">UP TO 75% OFF</div>
+                    <div class="item-filter-banner__image">
+                      <img src="./images/catalog/flower.png" alt="banner" />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="catalog__content">
-								<div class="catalog__control control-catalog">
-										<div class="control-catalog__filter">
-											<a href="#" class="control-catalog__filter-title">All Plants</a>
-											<a href="#" class="control-catalog__filter-title">New Arrivals</a>
-											<a href="#" class="control-catalog__filter-title">Sale</a>
-										</div>
-									<!-- Обертка для всего блока сортировки -->
-									<div class="control-catalog__sort">
-											
-											<!-- Текст "Short by:" -->
-											<div class="control-catalog__sort-label">Short by:</div>
+                <div class="catalog__control control-catalog">
+                  <!-- ФИЛЬТРЫ -->
+                  <div class="control-catalog__filter">
+                    <a
+                      href="#"
+                      class="control-catalog__filter-title active"
+                      data-filter="all"
+                      >All Plants</a
+                    >
+                    <a
+                      href="#"
+                      class="control-catalog__filter-title"
+                      data-filter="new"
+                      >New Arrivals</a
+                    >
+                    <a
+                      href="#"
+                      class="control-catalog__filter-title"
+                      data-filter="sale"
+                      >Sale</a
+                    >
+                  </div>
 
-											<!-- Сам выпадающий список -->
-											<div class="sort-select">
-													<!-- Кнопка, которая открывает список. По умолчанию в span стоит Default sorting -->
-													<button type="button" class="sort-select__title">
-															<span class="sort-select__current">Default sorting</span>
-													</button>
-													
-													<!-- Скрытый по умолчанию список -->
-													<div class="sort-select__body body-sort-catalog">
-															<div class="body-sort-catalog__item">Default sorting</div>
-															<div class="body-sort-catalog__item">Price up</div>
-															<div class="body-sort-catalog__item">Price down</div>
-													</div>
-											</div>
-											
-									</div>
-								</div>
-                <div class="catalog__products">
-                  <article class="product-card">
+                  <!-- СОРТИРОВКА -->
+                  <div class="control-catalog__sort">
+                    <div class="control-catalog__sort-label">Short by:</div>
+
+                    <div class="sort-select" id="sort-select">
+                      <button type="button" class="sort-select__title">
+                        <span class="sort-select__current"
+                          >Default sorting</span
+                        >
+                      </button>
+
+                      <div class="sort-select__body body-sort-catalog">
+                        <div
+                          class="body-sort-catalog__item"
+                          data-sort="default"
+                        >
+                          Default sorting
+                        </div>
+                        <div
+                          class="body-sort-catalog__item"
+                          data-sort="price-up"
+                        >
+                          Price up
+                        </div>
+                        <div
+                          class="body-sort-catalog__item"
+                          data-sort="price-down"
+                        >
+                          Price down
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- СЕТКА ТОВАРОВ -->
+                <div class="catalog__products" id="product-container">
+                  <!-- 1. Barberton Daisy (Обычный, all) -->
+                  <article
+                    class="product-card"
+                    data-category="all"
+                    data-price="119.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-1.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-1.png"
+                          alt="Barberton Daisy"
                         />
                       </span>
                     </a>
@@ -357,12 +457,18 @@
                       <div class="product-card__price">$119.00</div>
                     </div>
                   </article>
-                  <article class="product-card">
+
+                  <!-- 2. Angel Wing Begonia (New Arrival, new) -->
+                  <article
+                    class="product-card"
+                    data-category="new"
+                    data-price="169.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-2.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-2.png"
+                          alt="Angel Wing Begonia"
                         />
                       </span>
                     </a>
@@ -375,13 +481,19 @@
                       <div class="product-card__price">$169.00</div>
                     </div>
                   </article>
-                  <article class="product-card">
-                    <div class="product-card__sale">13% OFF</div>
+
+                  <!-- 3. African Violet (Sale, sale) -->
+                  <article
+                    class="product-card"
+                    data-category="sale"
+                    data-price="199.00"
+                  >
                     <a href="product.html" class="product-card__image">
+                      <div class="product-card__sale">13% OFF</div>
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-3.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-3.png"
+                          alt="African Violet"
                         />
                       </span>
                     </a>
@@ -391,18 +503,24 @@
                           >African Violet</a
                         >
                       </h4>
-                      <div class="product-card__price">
-												<div class="product-card__price-new">$199.00</div>
-												<div class="product-card__price-old">$229.00</div>
-											</div>
+                      <div class="product-card__price product-card__price-two">
+                        <div class="product-card__price-new">$199.00</div>
+                        <div class="product-card__price-old">$229.00</div>
+                      </div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 4. Beach Spider Lily (Sale, sale) -->
+                  <article
+                    class="product-card"
+                    data-category="sale"
+                    data-price="129.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-4.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-4.png"
+                          alt="Beach Spider Lily"
                         />
                       </span>
                     </a>
@@ -415,12 +533,18 @@
                       <div class="product-card__price">$129.00</div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 5. Blushing Bromeliad (New Arrival, new) -->
+                  <article
+                    class="product-card"
+                    data-category="new"
+                    data-price="139.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-5.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-5.png"
+                          alt="Blushing Bromeliad"
                         />
                       </span>
                     </a>
@@ -433,12 +557,18 @@
                       <div class="product-card__price">$139.00</div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 6. Aluminum Plant (Обычный, all) -->
+                  <article
+                    class="product-card"
+                    data-category="all"
+                    data-price="179.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-6.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-6.png"
+                          alt="Aluminum Plant"
                         />
                       </span>
                     </a>
@@ -451,12 +581,18 @@
                       <div class="product-card__price">$179.00</div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 7. Bird's Nest Fern (Обычный, all) -->
+                  <article
+                    class="product-card"
+                    data-category="all"
+                    data-price="99.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-7.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-7.png"
+                          alt="Bird's Nest Fern"
                         />
                       </span>
                     </a>
@@ -469,12 +605,18 @@
                       <div class="product-card__price">$99.00</div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 8. Broadleaf Lady Palm (Sale, sale) -->
+                  <article
+                    class="product-card"
+                    data-category="sale"
+                    data-price="59.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-8.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-8.png"
+                          alt="Broadleaf Lady Palm"
                         />
                       </span>
                     </a>
@@ -487,12 +629,18 @@
                       <div class="product-card__price">$59.00</div>
                     </div>
                   </article>
-									<article class="product-card">
+
+                  <!-- 9. Chinese Evergreen (New Arrival, new) -->
+                  <article
+                    class="product-card"
+                    data-category="new"
+                    data-price="39.00"
+                  >
                     <a href="product.html" class="product-card__image">
                       <span class="product-card__item-image">
                         <img
-                          src="./images/catalog/catalog-9.jpg"
-                          alt="flower"
+                          src="./images/catalog/catalog-9.png"
+                          alt="Chinese Evergreen"
                         />
                       </span>
                     </a>
@@ -506,12 +654,14 @@
                     </div>
                   </article>
                 </div>
+
+                <!-- ПАГИНАЦИЯ -->
                 <div class="catalog__footer">
                   <div class="catalog__pagging pagging">
                     <button
                       disabled
                       type="button"
-                      class="pagging__arrow pagging__arrow_left "
+                      class="pagging__arrow pagging__arrow_left"
                     ></button>
                     <ul class="pagging__list">
                       <li class="pagging__item">
@@ -547,9 +697,10 @@
     <script src="js/components/slider_swiper.js"></script>
     <script src="js/components/float-head.js"></script>
     <script src="js/components/spoller.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="js/range.js"></script>
     <script src="js/select.js"></script>
+    <script src="js/components/filter.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
 </html>
