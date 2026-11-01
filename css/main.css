@@ -651,6 +651,8 @@ body {
 @media (max-width: 47.9988rem) {
   .catalog__body {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 .catalog__content {
@@ -658,17 +660,46 @@ body {
 }
 .catalog__products {
   display: grid;
-  /* По умолчанию 3 колонки равной ширины */
+  /* Жестко задаем 3 колонки */
   grid-template-columns: repeat(3, 1fr);
-  /* Отступы между карточками (подберите под ваш дизайн, например 30px) */
-  gap: 30px;
-  /* Чтобы карточки не растягивались больше нужного */
+  -moz-column-gap: calc(20px + 13 * (100vw - 320px) / 1120);
+       column-gap: calc(20px + 13 * (100vw - 320px) / 1120);
+  row-gap: calc(20px + 50 * (100vw - 320px) / 1120);
+  /* Ограничиваем максимальную ширину контейнера, чтобы колонки не были гигантскими */
+  max-width: 900px; /* (258px * 3) + (33px * 2) = 840px, берем с запасом */
+  width: 100%;
+  margin: 0 auto; /* Центрируем сетку на странице */
   justify-content: center;
+  /* Планшеты: 2 колонки */
+}
+@media (max-width: 47.9988rem) {
+  .catalog__products {
+    /* ~768px */
+    width: 100%;
+    max-width: 600px;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+}
+.catalog__products {
+  /* Мобильные: 1 колонка */
+}
+@media (max-width: 29.9988rem) {
+  .catalog__products {
+    /* ~480px */
+    max-width: 100%;
+    grid-template-columns: 1fr;
+  }
 }
 .filter-catalog {
   background-color: var(--background-catalog);
   padding-block: 0.875rem;
   padding-inline: 1.25rem;
+}
+@media (max-width: 47.9988rem) {
+  .filter-catalog {
+    width: 100%;
+  }
 }
 .filter-catalog__items {
   display: grid;
@@ -979,7 +1010,7 @@ body {
   align-items: center;
 }
 .sort-select__title {
-  position: relative; /* Чтобы стрелка позиционировалась относительно кнопки */
+  position: relative;
   background: transparent;
   border: none;
   font-family: inherit;
@@ -991,36 +1022,51 @@ body {
   padding: 0;
   padding-right: 20px; /* Место для стрелки */
   transition: color 0.3s;
-  line-height: 1; /* Убираем лишние отступы строки */
+  line-height: 1;
+  /* Ховер на всю кнопку — текст зелёный */
 }
 .sort-select__title:hover {
   color: var(--green);
 }
+.sort-select__title {
+  /* Стрелка */
+}
 .sort-select__title::before, .sort-select__title::after {
   content: "";
   position: absolute;
-  right: 0;
-  top: 65%; /* Центрируем по вертикали */
-  background-color: currentColor;
-  height: 2px;
-  width: 7px;
-  transition: transform 0.3s ease;
-  border-radius: 1px;
-  margin-top: -1px; /* Компенсация толщины линии (2px / 2 = 1px) для идеального центра */
+  right: -5px;
+  top: 50%;
+  background-color: var(--text-header);
+  height: 0.125rem;
+  width: 8px;
+  transition: transform 0.5s ease 0s, background-color 0.3s ease;
+  pointer-events: none;
+}
+.sort-select__title {
+  /* Исходное положение стрелки (закрыто) — половинки ближе друг к другу */
 }
 .sort-select__title::before {
-  transform: translate(-5px, -50%) rotate(40deg);
-  transform-origin: right center;
+  transform: translate(-60%, -50%) rotate(40deg);
 }
 .sort-select__title::after {
-  transform: translate(0, -50%) rotate(-40deg);
-  transform-origin: left center;
+  transform: translate(-15%, -50%) rotate(-40deg);
+}
+.sort-select__title {
+  /* Ховер на кнопку — стрелка тоже зелёная */
+}
+.sort-select__title:hover::before, .sort-select__title:hover::after {
+  background-color: var(--green);
+}
+.sort-select__title {
+  /* Открытое состояние — стрелка разворачивается и остаётся зелёной */
 }
 .sort-select.is-open .sort-select__title::before {
-  transform: translate(-5px, -50%) rotate(-40deg);
+  transform: translate(-60%, -50%) rotate(-40deg);
+  background-color: var(--green);
 }
 .sort-select.is-open .sort-select__title::after {
-  transform: translate(0, -50%) rotate(40deg);
+  transform: translate(-15%, -50%) rotate(40deg);
+  background-color: var(--green);
 }
 .sort-select__body {
   position: absolute;
@@ -1055,20 +1101,51 @@ body {
 }
 
 .product-card {
-  /* Делаем карточку флекс-контейнером, чтобы картинка и текст встали друг под другом */
+  /* Делаем карточку флекс-контейнером */
   display: flex;
   flex-direction: column;
   gap: calc(20px + 11 * (100vw - 320px) / 1120);
-  /* Цвет фона из макета (Inspest Styles) */
-  /* Обнуляем стандартные отступы браузера, если нужно */
+  /* Обнуляем стандартные отступы */
   padding: 0;
   margin: 0 auto; /* Центрируем карточку внутри ячейки грида */
-  /* Скрываем все, что выходит за края (например, бейдж SALE) */
-  overflow: hidden;
+  /* Задаем ширину карточке, а не картинке, чтобы сетка строилась ровно */
+  width: 100%;
+  max-width: 258px;
+  /* Убираем overflow: hidden, он не нужен и может обрезать тени */
   position: relative; /* Чтобы позиционировать бейдж со скидкой */
 }
+.product-card__image {
+  background-color: var(--background-catalog);
+  /* Картинка занимает всю ширину карточки, высота фиксирована */
+  width: 100%;
+  height: 300px;
+  /* Центрируем картинку внутри блока */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+  /* Добавляем relative, чтобы бейдж SALE позиционировался внутри картинки */
+  position: relative;
+}
+.product-card__item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px; /* Небольшой отступ, чтобы картинка не прилипала к краям */
+}
 .product-card__item-image img {
+  mix-blend-mode: multiply;
+  /* Картинка адаптируется под размеры блока */
   max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain; /* Сохраняет пропорции */
+  display: block;
 }
 .product-card__title {
   color: var(--text-header);
@@ -1093,9 +1170,17 @@ body {
   align-items: center;
   width: 5rem;
   height: 1.8125rem;
+  text-align: left;
+  position: absolute; /* Бейдж позиционируется внутри __image */
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 .product-card__price-old {
   color: var(--color-price);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-price); /* Цвет линии */
+  text-decoration-thickness: 0.125rem;
 }
 
 /* Для планшетов (например, экраны до 992px) */

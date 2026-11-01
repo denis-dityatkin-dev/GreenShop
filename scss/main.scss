@@ -511,22 +511,12 @@ body {
 		@include adaptive-value("gap", 50, 30, 0);
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 
 	&__filter {
-		// // Жестко задаем ширину 310px и запрещаем сжиматься
-		// flex: 0 0 310px;
-		// max-width: 310px;
-		// width: 100%; // На случай, если экран меньше 310px
-
-		// // Обязательно добавляем border-box, чтобы padding не раздувал блок
-		// box-sizing: border-box;
-
-		// @media (max-width: 47.9988rem) {
-		// 	flex: 1 1 auto;
-		// 	max-width: 100%;
-		// }
 	}
 
 	&__content {
@@ -538,12 +528,33 @@ body {
 
 	&__products {
 		display: grid;
-		/* По умолчанию 3 колонки равной ширины */
+		/* Жестко задаем 3 колонки */
 		grid-template-columns: repeat(3, 1fr);
-		/* Отступы между карточками (подберите под ваш дизайн, например 30px) */
-		gap: 30px;
-		/* Чтобы карточки не растягивались больше нужного */
+
+		@include adaptive-value("column-gap", 33, 20, 0);
+		@include adaptive-value("row-gap", 70, 20, 0);
+
+		/* Ограничиваем максимальную ширину контейнера, чтобы колонки не были гигантскими */
+		max-width: 900px; /* (258px * 3) + (33px * 2) = 840px, берем с запасом */
+		width: 100%;
+		margin: 0 auto; /* Центрируем сетку на странице */
 		justify-content: center;
+
+		/* Планшеты: 2 колонки */
+		@media (max-width: 47.9988rem) {
+			/* ~768px */
+			width: 100%;
+			max-width: 600px;
+			grid-template-columns: repeat(2, 1fr);
+			align-items: start;
+		}
+
+		/* Мобильные: 1 колонка */
+		@media (max-width: 29.9988rem) {
+			/* ~480px */
+			max-width: 100%;
+			grid-template-columns: 1fr;
+		}
 	}
 
 	&__footer {
@@ -557,6 +568,9 @@ body {
 	background-color: var(--background-catalog);
 	padding-block: 0.875rem;
 	padding-inline: 1.25rem;
+	@media (max-width: 47.9988rem) {
+		width: 100%;
+	}
 
 	&__items {
 		display: grid;
@@ -913,7 +927,7 @@ body {
 	align-items: center;
 
 	&__title {
-		position: relative; /* Чтобы стрелка позиционировалась относительно кнопки */
+		position: relative;
 		background: transparent;
 		border: none;
 		font-family: inherit;
@@ -925,49 +939,53 @@ body {
 		padding: 0;
 		padding-right: 20px; /* Место для стрелки */
 		transition: color 0.3s;
-		line-height: 1; /* Убираем лишние отступы строки */
+		line-height: 1;
 
+		/* Ховер на всю кнопку — текст зелёный */
 		&:hover {
 			color: var(--green);
 		}
 
-		// Сама стрелка (две линии)
+		/* Стрелка */
 		&::before,
 		&::after {
 			content: "";
 			position: absolute;
-			right: 0;
-			top: 65%; /* Центрируем по вертикали */
-			background-color: currentColor;
-			height: 2px;
-			width: 7px;
-			transition: transform 0.3s ease;
-			border-radius: 1px;
-			margin-top: -1px; /* Компенсация толщины линии (2px / 2 = 1px) для идеального центра */
+			right: -5px;
+			top: 50%;
+			background-color: var(--text-header);
+			height: 0.125rem;
+			width: 8px;
+			transition:
+				transform 0.5s ease 0s,
+				background-color 0.3s ease;
+			pointer-events: none;
 		}
 
-		// Левая половинка
+		/* Исходное положение стрелки (закрыто) — половинки ближе друг к другу */
 		&::before {
-			transform: translate(-5px, -50%) rotate(40deg);
-			transform-origin: right center;
-		}
-
-		// Правая половинка
-		&::after {
-			transform: translate(0, -50%) rotate(-40deg);
-			transform-origin: left center;
-		}
-	}
-
-	// Переворот стрелки
-	&.is-open &__title {
-		&::before {
-			// Левая половинка была 40deg (вниз), стала -40deg (вверх)
-			transform: translate(-5px, -50%) rotate(-40deg);
+			transform: translate(-60%, -50%) rotate(40deg);
 		}
 		&::after {
-			// Правая половинка была -40deg (вниз), стала 40deg (вверх)
-			transform: translate(0, -50%) rotate(40deg);
+			transform: translate(-15%, -50%) rotate(-40deg);
+		}
+
+		/* Ховер на кнопку — стрелка тоже зелёная */
+		&:hover::before,
+		&:hover::after {
+			background-color: var(--green);
+		}
+
+		/* Открытое состояние — стрелка разворачивается и остаётся зелёной */
+		.sort-select.is-open & {
+			&::before {
+				transform: translate(-60%, -50%) rotate(-40deg);
+				background-color: var(--green);
+			}
+			&::after {
+				transform: translate(-15%, -50%) rotate(40deg);
+				background-color: var(--green);
+			}
 		}
 	}
 
@@ -1012,29 +1030,58 @@ body {
 	}
 }
 .product-card {
-	// width: 258px;
-	// height: 300px;
-
-	/* Делаем карточку флекс-контейнером, чтобы картинка и текст встали друг под другом */
+	/* Делаем карточку флекс-контейнером */
 	display: flex;
 	flex-direction: column;
 	@include adaptive-value("gap", 31, 20, 0);
-	/* Цвет фона из макета (Inspest Styles) */
-	// background-color: var(--background-catalog);
 
-	/* Обнуляем стандартные отступы браузера, если нужно */
+	/* Обнуляем стандартные отступы */
 	padding: 0;
 	margin: 0 auto; /* Центрируем карточку внутри ячейки грида */
 
-	/* Скрываем все, что выходит за края (например, бейдж SALE) */
-	overflow: hidden;
+	/* Задаем ширину карточке, а не картинке, чтобы сетка строилась ровно */
+	width: 100%;
+	max-width: 258px;
+
+	/* Убираем overflow: hidden, он не нужен и может обрезать тени */
 	position: relative; /* Чтобы позиционировать бейдж со скидкой */
+
 	&__image {
+		background-color: var(--background-catalog);
+
+		/* Картинка занимает всю ширину карточки, высота фиксирована */
+		width: 100%;
+		height: 300px;
+
+		/* Центрируем картинку внутри блока */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		flex-shrink: 0;
+		flex-grow: 0;
+
+		/* Добавляем relative, чтобы бейдж SALE позиционировался внутри картинки */
+		position: relative;
 	}
 
 	&__item-image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		padding: 10px; /* Небольшой отступ, чтобы картинка не прилипала к краям */
+
 		img {
+			mix-blend-mode: multiply;
+			/* Картинка адаптируется под размеры блока */
 			max-width: 100%;
+			max-height: 100%;
+			width: auto;
+			height: auto;
+			object-fit: contain; /* Сохраняет пропорции */
+			display: block;
 		}
 	}
 
@@ -1067,8 +1114,14 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		width: 5rem;
 		height: 1.8125rem;
+		text-align: left;
+		position: absolute; /* Бейдж позиционируется внутри __image */
+		top: 0;
+		left: 0;
+		z-index: 2;
 	}
 
 	&__price-new {
@@ -1076,6 +1129,9 @@ body {
 
 	&__price-old {
 		color: var(--color-price);
+		text-decoration: line-through;
+		text-decoration-color: var(--color-price); /* Цвет линии */
+		text-decoration-thickness: 0.125rem;
 	}
 }
 .pagging {
