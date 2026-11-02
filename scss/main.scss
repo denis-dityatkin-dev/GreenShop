@@ -1030,109 +1030,218 @@ body {
 	}
 }
 .product-card {
-	/* Делаем карточку флекс-контейнером */
-	display: flex;
-	flex-direction: column;
-	@include adaptive-value("gap", 31, 20, 0);
+  display: flex;
+  flex-direction: column;
+  @include adaptive-value("gap", 31, 20, 0);
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 258px;
+  position: relative;
 
-	/* Обнуляем стандартные отступы */
-	padding: 0;
-	margin: 0 auto; /* Центрируем карточку внутри ячейки грида */
+  /* Зелёная полоса сверху карточки */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--green);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease;
+    z-index: 3;
+  }
 
-	/* Задаем ширину карточке, а не картинке, чтобы сетка строилась ровно */
-	width: 100%;
-	max-width: 258px;
+  &__image {
+    background-color: var(--background-catalog);
+    width: 100%;
+    height: 18.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+    overflow: hidden;            /* иконки аккуратно выезжают снизу */
+    transition: background-color 0.3s ease;
+  }
 
-	/* Убираем overflow: hidden, он не нужен и может обрезать тени */
-	position: relative; /* Чтобы позиционировать бейдж со скидкой */
+  &__item-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0.625rem;
 
-	&__image {
-		background-color: var(--background-catalog);
+    img {
+      mix-blend-mode: multiply;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+  }
 
-		/* Картинка занимает всю ширину карточки, высота фиксирована */
-		width: 100%;
-		height: 300px;
+  /* Блок с иконками под картинкой (корзина и лупа) */
+  &__actions {
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translate(-50%, 100%);   /* спрятан ниже */
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 12px;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 2;
+  }
 
-		/* Центрируем картинку внутри блока */
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  /* Кнопки-иконки (иконочный шрифт) */
+  &__action {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text-header);
+    font-size: 1.125rem;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
 
-		flex-shrink: 0;
-		flex-grow: 0;
+    /* Сам значок — псевдоэлемент иконочного шрифта */
+    &::before {
+      font-family: "icomoon";
+      speak: never;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-		/* Добавляем relative, чтобы бейдж SALE позиционировался внутри картинки */
-		position: relative;
-	}
+    /* Ховер и фокус */
+    &:hover,
+    &:focus-visible {
+      color: var(--green);
+    }
 
-	&__item-image {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-		padding: 10px; /* Небольшой отступ, чтобы картинка не прилипала к краям */
+    &:hover {
+      transform: scale(1.15);
+    }
 
-		img {
-			mix-blend-mode: multiply;
-			/* Картинка адаптируется под размеры блока */
-			max-width: 100%;
-			max-height: 100%;
-			width: auto;
-			height: auto;
-			object-fit: contain; /* Сохраняет пропорции */
-			display: block;
-		}
-	}
+    &:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 2px;
+    }
 
-	&__body {
-	}
+    /* Стили для сердца */
+    &--heart {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 1.5rem;
+      height: 1.5rem;
+      z-index: 3;
+      opacity: 0;            /* скрыто по умолчанию на десктопе */
+      transition: opacity 0.3s ease, color 0.2s ease, transform 0.2s ease;
+    }
+  }
 
-	&__title {
-		color: var(--text-header);
-		margin-bottom: 0.375rem;
-	}
+  /* ХОВЕР на карточку */
+  &:hover {
+    &::before {
+      transform: scaleX(1);  /* полоса выезжает */
+    }
 
-	&__link-title {
-	}
+    .product-card__image {
+      background-color: var(--white);
+    }
 
-	&__price {
-		font-weight: 700;
-		font-size: 1.125rem;
-		color: var(--green);
-		&-two {
-			display: flex;
-			gap: 1rem;
-		}
-	}
+    /* Корзина и лупа выезжают */
+    .product-card__actions {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
 
-	&__sale {
-		font-weight: 500;
-		color: var(--white);
-		background-color: var(--green);
-		margin-top: 0.875rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+    /* Сердце появляется */
+    .product-card__action--heart {
+      opacity: 1;
+    }
+  }
 
-		width: 5rem;
-		height: 1.8125rem;
-		text-align: left;
-		position: absolute; /* Бейдж позиционируется внутри __image */
-		top: 0;
-		left: 0;
-		z-index: 2;
-	}
+  &__body {}
 
-	&__price-new {
-	}
+  &__title {
+    color: var(--text-header);
+    margin-bottom: 0.375rem;
+  }
 
-	&__price-old {
-		color: var(--color-price);
-		text-decoration: line-through;
-		text-decoration-color: var(--color-price); /* Цвет линии */
-		text-decoration-thickness: 0.125rem;
-	}
+  &__link-title {}
+
+  &__price {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--green);
+
+    &-two {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  &__sale {
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--green);
+    margin-top: 0.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 1.8125rem;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  &__price-new {}
+
+  &__price-old {
+    color: var(--color-price);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-price);
+    text-decoration-thickness: 0.125rem;
+  }
+
+  /* ===== Мобилка / планшет (ниже 991.98px) ===== */
+  @media (max-width: 991.98px) {
+    &__image {
+      border-radius: 20px;
+    }
+
+    /* Скрываем корзину и лупу полностью */
+    &__actions {
+      display: none;
+    }
+
+    /* Сердце всегда видимо */
+    &__action--heart {
+      opacity: 1;
+    }
+  }
 }
 .pagging {
 	&__arrow {
