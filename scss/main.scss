@@ -508,7 +508,7 @@ body {
 
 	&__body {
 		display: flex;
-		 align-items: stretch; 
+		align-items: stretch;
 		@include adaptive-value("gap", 50, 30, 0);
 		@include adaptive-value("margin-bottom", 90, 30, 0);
 		@media (max-width: 47.9988rem) {
@@ -528,7 +528,6 @@ body {
 	}
 
 	&__control {
-	
 	}
 
 	&__products {
@@ -638,7 +637,7 @@ body {
 		@media (min-width: 47.9988rem) {
 			display: flex;
 			flex-direction: column;
-			@include adaptive-value("gap", 30, 15, 0);
+			@include adaptive-value("gap", 20, 15, 0);
 		}
 	}
 
@@ -1275,14 +1274,14 @@ body {
 .pagging {
 	display: flex;
 	justify-content: end;
-	gap: 1.25rem;
-		@include adaptive-value("padding-bottom", 94, 30, 0);
+	gap: 0.625rem;
+	@include adaptive-value("padding-bottom", 94, 30, 0);
 	@media (max-width: 61.9988rem) {
 		justify-content: center;
 	}
 	&__arrow {
 		&::before {
-			font-size: 10px;
+			font-size: 0.625rem;
 		}
 		&_left {
 		}
@@ -1353,4 +1352,92 @@ body {
 }
 .product-card.is-hidden {
 	display: none !important;
+}
+
+// =========== more ===============
+
+.more {
+	@include adaptive-value("padding-bottom", 138, 30, 0);
+	&__container {
+	}
+
+	&__items {
+		display: flex;
+		@include adaptive-value("gap", 28, 20, 0);
+		@media (max-width: 47.9988rem) {
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	&__item {
+	}
+}
+.item-more {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	@media (max-width: 47.9988rem) {
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__image {
+		img {
+			max-width: 100%;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+		text-align: right;
+		@media (max-width: 47.9988rem) {
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	&__content-title {
+		font-weight: 900;
+		font-size: 1.125rem;
+		line-height: 1.33;
+		text-transform: uppercase;
+		color: var(--text-header);
+		margin-bottom: 0.5625rem;
+		br {
+			@media (max-width: 47.9988rem) {
+				display: none;
+			}
+		}
+	}
+
+	&__content-text {
+		font-size: 0.875rem;
+		line-height: 1.71;
+		&:not(:last-child) {
+			@include adaptive-value("margin-bottom", 25, 15, 0);
+		}
+	}
+
+	&__content-button {
+		width: 8.75rem;
+		height: 2.5rem;
+		display: flex;
+		gap: 0.125rem;
+		flex-direction: row-reverse;
+		justify-content: center;
+		align-items: center;
+
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 143%;
+		color: var(--white);
+		&::before {
+			font-size: 1rem;
+		}
+		@media (max-width: 47.9988rem) {
+			width: 100%;
+		}
+	}
 }
