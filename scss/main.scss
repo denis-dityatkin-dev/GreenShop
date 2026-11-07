@@ -1397,40 +1397,69 @@ body {
 		padding-top: 4rem; 
 	}
 
-	&__image {
-		mix-blend-mode: multiply;
-		
-		img {
-			max-width: 100%;
-			transition: transform 0.3s ease; /* Плавный переход для ховера */
-			
-			// Размеры картинки для больших экранов
-			@media (min-width: 1024.9808px) {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
-				display: block;
-			}
-		}
+&__image {
+    mix-blend-mode: multiply;
+    position: relative; 
+    z-index: 1; 
 
-		&:hover {
-			img {
-				transform: scale(1.05); /* Увеличение картинки при наведении */
-			}
-		}
+    img {
+        max-width: 100%;
+        transition: transform 0.3s ease;
+        
+        @media (min-width: 1024.9808px) {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 2; 
+        }
+    }
 
-		// Абсолютное позиционирование только для больших экранов
-		@media (min-width: 1024.9808px) {
-			position: absolute;
-			top: -3.125rem; // -50px. Поднимите или опустите значение под макет
-			left: 0;
-			width: 18.25rem; // 292px
-			height: 18.25rem;
-			z-index: 2;
-			/* Важно: скрываем все, что выходит за рамки круга/квадрата при ховере */
-			overflow: hidden;
-		}
-	}
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+
+    @media (min-width: 1024.9808px) {
+        position: absolute; 
+        top: -3.125rem; 
+        left: 0;
+        width: 18.25rem; 
+        height: 18.25rem;
+        z-index: 2;
+        // overflow: hidden;  <--- УДАЛИТЕ ИЛИ ЗАКОММЕНТИРУЙТЕ ЭТУ СТРОКУ
+    }
+
+    // --- ДЕКОР ---
+    &::before {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        backface-visibility: hidden;
+        
+        // В Figma размер группы с дугой 264x264 (исходя из вашего скриншота).
+        // Задаем этот размер. Если после замены SVG дуга станет слишком большой - уменьшите до 200px.
+        width: 264px; 
+        height: 264px; 
+        
+        // Позиционирование относительно контейнера картинки (18.25rem / 292px)
+        // Вам нужно будет чуть-чуть подогнать эти два значения:
+        top: 70%;   // Опускаем вниз (попробуйте 120px, 140px)
+        left: -40%; // Уводим влево (попробуйте -100px, -150px)
+        
+        background: url("../images/more/more-decor.svg") left bottom no-repeat;
+        
+        // Если SVG правильный, contain покажет дугу целиком
+        background-size: contain; 
+        
+        z-index: 5; 
+				@media (max-width: 991.9808px){
+					display: none;
+				}
+    }
+}
 
 	&__content {
 		display: flex;
