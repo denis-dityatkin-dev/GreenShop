@@ -1379,16 +1379,16 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 1.25rem;
-	position: relative; 
+	position: relative;
 	background: var(--background-catalog);
-	
+
 	/* Убираем hidden отсюда, чтобы цветок мог вылезать вверх */
-	overflow: visible; 
+	overflow: visible;
 
 	// Настройки для больших экранов
 	@media (min-width: 1024.9808px) {
-		min-height: 18.25rem; 
-		padding: 1.25rem; 
+		min-height: 18.25rem;
+		padding: 1.25rem;
 	}
 
 	// Настройки для мобильных и планшетов
@@ -1396,7 +1396,7 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		min-height: auto;
-		padding-top: 4rem; 
+		padding-top: 4rem;
 	}
 
 	/* === НОВЫЙ БЛОК: Обертка для декора === */
@@ -1407,7 +1407,7 @@ body {
 		width: 100%;
 		height: 100%;
 		/* Обрезаем дугу ровно по размерам этой карточки */
-		overflow: hidden; 
+		overflow: hidden;
 		z-index: 1; /* Дуга находится на фоне */
 		pointer-events: none;
 
@@ -1415,17 +1415,17 @@ body {
 		&::before {
 			content: "";
 			position: absolute;
-			width: 16.5rem; 
-			height: 16.5rem; 
-			
+			width: 16.5rem;
+			height: 16.5rem;
+
 			/* Сдвигаем в левый нижний угол */
-			bottom: -50%; 
-			left: -25%;   
-			
+			bottom: -50%;
+			left: -25%;
+
 			background: url("../images/more/more-decor.svg") left bottom no-repeat;
-			background-size: 100% 100%; 
-			
-			@media (max-width: 64.0613rem){
+			background-size: 100% 100%;
+
+			@media (max-width: 64.0613rem) {
 				display: none;
 			}
 		}
@@ -1433,13 +1433,13 @@ body {
 
 	&__image {
 		mix-blend-mode: multiply;
-		position: relative; 
+		position: relative;
 		z-index: 2; /* Цветок поверх декора */
 
 		img {
 			max-width: 100%;
 			transition: transform 0.3s ease;
-			
+
 			@media (min-width: 1024.9808px) {
 				width: 100%;
 				height: 100%;
@@ -1458,10 +1458,10 @@ body {
 
 		/* Возвращаем абсолютное позиционирование цветка, чтобы он вылезал вверх */
 		@media (min-width: 1024.9808px) {
-			position: absolute; 
-			top: -3.125rem; 
+			position: absolute;
+			top: -3.125rem;
 			left: 0;
-			width: 18.25rem; 
+			width: 18.25rem;
 			height: 18.25rem;
 			z-index: 3;
 		}
@@ -1476,14 +1476,14 @@ body {
 
 		/* Отступ слева, чтобы текст не заезжал под цветок */
 		@media (min-width: 1024.9808px) {
-			padding-left: calc(18.25rem + 1.25rem); 
+			padding-left: calc(18.25rem + 1.25rem);
 		}
 
 		/* Настройки для мобильных */
 		@media (max-width: 47.9988rem) {
 			align-items: center;
 			text-align: center;
-			margin-left: 0; 
+			margin-left: 0;
 		}
 	}
 
@@ -1517,7 +1517,7 @@ body {
 		flex-direction: row-reverse;
 		justify-content: center;
 		align-items: center;
-		margin-top: 1rem; 
+		margin-top: 1rem;
 
 		font-weight: 500;
 		font-size: 0.875rem;
@@ -1529,5 +1529,83 @@ body {
 		@media (max-width: 47.9988rem) {
 			width: 100%;
 		}
+	}
+}
+
+// ========= blog ==========
+
+.blog {
+	padding-bottom: 1.875rem;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		@include adaptive-value("gap", 35, 20, 0);
+	}
+
+	&__header {
+	}
+
+	&__items {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include adaptive-value("gap", 43, 15, 0);
+
+		@media (max-width: 47.9988rem) {
+			flex-wrap: wrap;
+		}
+	}
+}
+
+.header-blog {
+	text-align: center;
+	&__title {
+		font-weight: 700;
+		font-size: 1.875rem;
+		color: var(--text-header);
+		margin-bottom: 0.9375rem;
+	}
+
+	&__text {
+		font-size: 0.875rem;
+		line-height: 1.71;
+		p {
+			&:not(:last-child) {
+				margin-bottom: 0.625rem;
+			}
+		}
+	}
+}
+
+.items-blog {
+	&__item {
+		// Чтобы картинка могла выйти за пределы родителя на мобилке
+		@media (max-width: 582.9808px) {
+			width: 100%;
+		}
+
+		// Обёртка для картинки — нужна для корректного overflow: hidden
+		// и чтобы масштабирование не влияло на раскладку
+		img {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			transition: transform 0.4s ease;
+
+			@media (max-width: 36.4363rem) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		// Ховер: увеличиваем картинку
+		&:hover img {
+			transform: scale(1.05);
+		}
+
+		// Если нужно, чтобы увеличение не выходило за границы карточки,
+		// раскомментируйте overflow: hidden ниже
+		// overflow: hidden;
 	}
 }
