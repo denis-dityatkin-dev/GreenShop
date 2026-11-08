@@ -1379,17 +1379,19 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 1.25rem;
-	position: relative; /* Важно для позиционирования картинки */
-
+	position: relative; 
 	background: var(--background-catalog);
+	
+	/* Убираем hidden отсюда, чтобы цветок мог вылезать вверх */
+	overflow: visible; 
 
-	// Настройки для больших экранов (выше 1024px)
+	// Настройки для больших экранов
 	@media (min-width: 1024.9808px) {
-		min-height: 18.25rem; // 292px
+		min-height: 18.25rem; 
 		padding: 1.25rem; 
 	}
 
-	// Настройки для мобильных и планшетов (ниже 1024px) - оставляем как было
+	// Настройки для мобильных и планшетов
 	@media (max-width: 47.9988rem) {
 		flex-direction: column;
 		justify-content: center;
@@ -1397,83 +1399,87 @@ body {
 		padding-top: 4rem; 
 	}
 
-&__image {
-    mix-blend-mode: multiply;
-    position: relative; 
-    z-index: 1; 
+	/* === НОВЫЙ БЛОК: Обертка для декора === */
+	&__decor {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		/* Обрезаем дугу ровно по размерам этой карточки */
+		overflow: hidden; 
+		z-index: 1; /* Дуга находится на фоне */
+		pointer-events: none;
 
-    img {
-        max-width: 100%;
-        transition: transform 0.3s ease;
-        
-        @media (min-width: 1024.9808px) {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            position: relative;
-            z-index: 2; 
-        }
-    }
+		/* Сама зеленая дуга */
+		&::before {
+			content: "";
+			position: absolute;
+			width: 16.5rem; 
+			height: 16.5rem; 
+			
+			/* Сдвигаем в левый нижний угол */
+			bottom: -50%; 
+			left: -25%;   
+			
+			background: url("../images/more/more-decor.svg") left bottom no-repeat;
+			background-size: 100% 100%; 
+			
+			@media (max-width: 64.0613rem){
+				display: none;
+			}
+		}
+	}
 
-    &:hover {
-        img {
-            transform: scale(1.05);
-        }
-    }
+	&__image {
+		mix-blend-mode: multiply;
+		position: relative; 
+		z-index: 2; /* Цветок поверх декора */
 
-    @media (min-width: 1024.9808px) {
-        position: absolute; 
-        top: -3.125rem; 
-        left: 0;
-        width: 18.25rem; 
-        height: 18.25rem;
-        z-index: 2;
-        // overflow: hidden;  <--- УДАЛИТЕ ИЛИ ЗАКОММЕНТИРУЙТЕ ЭТУ СТРОКУ
-    }
+		img {
+			max-width: 100%;
+			transition: transform 0.3s ease;
+			
+			@media (min-width: 1024.9808px) {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: block;
+				position: relative;
+				z-index: 3; /* Сама картинка поверх всего */
+			}
+		}
 
-    // --- ДЕКОР ---
-    &::before {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-        backface-visibility: hidden;
-        
-        // В Figma размер группы с дугой 264x264 (исходя из вашего скриншота).
-        // Задаем этот размер. Если после замены SVG дуга станет слишком большой - уменьшите до 200px.
-        width: 264px; 
-        height: 264px; 
-        
-        // Позиционирование относительно контейнера картинки (18.25rem / 292px)
-        // Вам нужно будет чуть-чуть подогнать эти два значения:
-        top: 70%;   // Опускаем вниз (попробуйте 120px, 140px)
-        left: -40%; // Уводим влево (попробуйте -100px, -150px)
-        
-        background: url("../images/more/more-decor.svg") left bottom no-repeat;
-        
-        // Если SVG правильный, contain покажет дугу целиком
-        background-size: contain; 
-        
-        z-index: 5; 
-				@media (max-width: 991.9808px){
-					display: none;
-				}
-    }
-}
+		&:hover {
+			img {
+				transform: scale(1.05);
+			}
+		}
+
+		/* Возвращаем абсолютное позиционирование цветка, чтобы он вылезал вверх */
+		@media (min-width: 1024.9808px) {
+			position: absolute; 
+			top: -3.125rem; 
+			left: 0;
+			width: 18.25rem; 
+			height: 18.25rem;
+			z-index: 3;
+		}
+	}
 
 	&__content {
 		display: flex;
 		flex-direction: column;
 		align-items: end;
 		text-align: right;
-		z-index: 1; // Чтобы текст был под картинкой, если они пересекутся
+		z-index: 2; /* Текст поверх декора */
 
-		// Отступ слева, чтобы текст не заезжал под абсолютную картинку
+		/* Отступ слева, чтобы текст не заезжал под цветок */
 		@media (min-width: 1024.9808px) {
 			padding-left: calc(18.25rem + 1.25rem); 
 		}
 
-		// Настройки для мобильных
+		/* Настройки для мобильных */
 		@media (max-width: 47.9988rem) {
 			align-items: center;
 			text-align: center;
