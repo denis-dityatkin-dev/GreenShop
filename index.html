@@ -22,7 +22,7 @@
     <div class="wrapper">
       <header id="navbar" class="header">
         <div class="header__container">
-          <a data-goto=".wrapper" href="#" class="header__logo">
+          <a data-goto=".wrapper" href="#" class="header__logo logo">
             <img src="./images/logo.svg" alt="logo" />
           </a>
           <div class="header__menu menu menu-header">
@@ -979,84 +979,165 @@
             </div>
           </div>
         </section>
-				<section class="blog">
-					<div class="blog__container">
-						<div class="blog__header header-blog">
-							<h3 class="header-blog__title">Our Blog Posts</h3>
-							<div class="header-blog__text">
-								<p>We are an online plant shop offering a wide range of cheap and trendy plants. </p>
-							</div>
-						</div>
-						<ul class="blog__items items-blog">
-							<li class="items-blog__item">
-								<img src="./images/blogs/blog-1.jpg" alt="flower">
-							</li>
-							<li class="items-blog__item">
-								<img src="./images/blogs/blog-2.jpg" alt="flower">
-							</li>
-							<li class="items-blog__item">
-								<img src="./images/blogs/blog-3.jpg" alt="flower">
-							</li>
-							<li class="items-blog__item">
-								<img src="./images/blogs/blog-4.jpg" alt="flower">
-							</li>
-						</ul>
-					</div>
-				</section>
+        <section class="blog">
+          <div class="blog__container">
+            <div class="blog__header header-blog">
+              <h3 class="header-blog__title">Our Blog Posts</h3>
+              <div class="header-blog__text">
+                <p>
+                  We are an online plant shop offering a wide range of cheap and
+                  trendy plants.
+                </p>
+              </div>
+            </div>
+            <ul class="blog__items items-blog">
+              <li class="items-blog__item">
+                <img src="./images/blogs/blog-1.jpg" alt="flower" />
+              </li>
+              <li class="items-blog__item">
+                <img src="./images/blogs/blog-2.jpg" alt="flower" />
+              </li>
+              <li class="items-blog__item">
+                <img src="./images/blogs/blog-3.jpg" alt="flower" />
+              </li>
+              <li class="items-blog__item">
+                <img src="./images/blogs/blog-4.jpg" alt="flower" />
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
       <footer class="footer">
         <div class="footer__container">
-					<div class="footer__header header-footer">
-						<div class="header-footer__items">
-							<article class="header-footer__item item-footer__header">
-								<div class="item-footer__header-image">
-									<img src="./images/footer/footer-1.svg" alt="flower">
-								</div>
-								<h5 class="item-footer__header-title">Garden Care</h5>
-								<div class="item-footer__header-text">
-									<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-								</div>
-							</article>
-							<article class="header-footer__item item-footer__header">
-								<div class="item-footer__header-image">
-									<img src="./images/footer/footer-2.svg" alt="flower">
-								</div>
-								<h5 class="item-footer__header-title">Plant Renovation</h5>
-								<div class="item-footer__header-text">
-									<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-								</div>
-							</article>
-							<article class="header-footer__item item-footer__header">
-								<div class="item-footer__header-image">
-									<img src="./images/footer/footer-3.svg" alt="flower">
-								</div>
-								<h5 class="item-footer__header-title">Watering Graden</h5>
-								<div class="item-footer__header-text">
-									<p>We are an online plant shop offering a wide range of cheap and trendy plants.</p>
-								</div>
-							</article>
-						</div>
-						<div class="header-footer__form form__footer">
-							<h5 class="form__footer-title">Would you like to join newsletters?</h5>
-							<form id="form" action="https://api.web3forms.com/submit" method="POST" class="form__footer-form footer-form__body validate-form">
-									<div class="footer-form__item form__item">
-										<label for="email" class="form__label"></label>
-										<input autocomplete="off" id="email" type="email" placeholder="enter your email address..." name="email" class="footer-form__input form__input _req _email">
-									</div>
-										<!-- Скрытые поля для web3forms -->
-									<input type="hidden" name="access_key" value="5cadd7bf-4130-4122-a875-c67601816d4a">
-									<input type="hidden" name="to" value="den04101990@gmail.com">
-									<input type="hidden" name="subject" value="Новое сообщение с сайта">
-									<button type="submit" class="footer-form__button form__button button">Join</button>
-								</form>
-							<div class="form__footer-text">
-								<p>We usually post offers and challenges in newsletter. We’re your online houseplant destination. We offer a wide range of houseplants and accessories shipped directly from our (green)house to yours! </p>
-							</div>
-						</div>
-					</div>
-					<div class="footer__main main-footer"></div>
-					<div class="footer__bottom bottom-footer"></div>
-				</div>
+          <div class="footer__header header-footer">
+            <div class="header-footer__items">
+              <!-- Карточка 1 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-1.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Garden Care</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Карточка 2 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-2.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Plant Renovation</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Карточка 3 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-3.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Watering Graden</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Форма (теперь она тоже карточка внутри сетки) -->
+              <div class="header-footer__item header-footer__form form__footer">
+                <h5 class="form__footer-title">
+                  Would you like to join newsletters?
+                </h5>
+                <form
+                  id="form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  class="form__footer-form footer-form__body validate-form"
+                >
+                  <div class="footer-form__item form__item">
+                    <label for="email" class="form__label"></label>
+                    <input
+                      autocomplete="off"
+                      id="email"
+                      type="email"
+                      placeholder="enter your email address..."
+                      name="email"
+                      class="footer-form__input form__input _req _email"
+                    />
+                  </div>
+                  <!-- Скрытые поля для web3forms -->
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="5cadd7bf-4130-4122-a875-c67601816d4a"
+                  />
+                  <input
+                    type="hidden"
+                    name="to"
+                    value="den04101990@gmail.com"
+                  />
+                  <input
+                    type="hidden"
+                    name="subject"
+                    value="Новое сообщение с сайта"
+                  />
+                  <button
+                    type="submit"
+                    class="footer-form__button form__button button"
+                  >
+                    Join
+                  </button>
+                </form>
+                <div class="form__footer-text">
+                  <p>
+                    We usually post offers and challenges in newsletter. We’re
+                    your online houseplant destination. We offer a wide range of
+                    houseplants and accessories shipped directly from our
+                    (green)house to yours!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__main main-footer">
+            <!-- Логотип -->
+            <a data-goto=".wrapper" href="#" class="main-footer__item logo">
+              <img src="./images/logo.svg" alt="logo" />
+            </a>
+
+            <!-- Адрес (не ссылка, но с ховером) -->
+            <a href="#" class="main-footer__item icon-location">
+              <span>
+                70 West Buckingham Ave.<br />
+                Farmingdale, NY 11735
+              </span>
+            </a>
+
+            <!-- Почта -->
+            <a
+              href="mailto:contact@greenshop.com"
+              class="main-footer__item icon-message"
+            >
+              <span>contact@greenshop.com</span>
+            </a>
+
+            <!-- Телефон -->
+            <a href="tel:+8801911717490" class="main-footer__item icon-phone">
+              <span>+88 01911 717 490</span>
+            </a>
+          </div>
+          <div class="footer__bottom bottom-footer"></div>
+        </div>
       </footer>
     </div>
     <script src="js/components/burger.js"></script>
@@ -1068,6 +1149,7 @@
     <script src="js/range.js"></script>
     <script src="js/select.js"></script>
     <script src="js/components/filter.js"></script>
+    <script src="js/components/forms.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
 </html>
