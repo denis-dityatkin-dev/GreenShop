@@ -1890,9 +1890,6 @@ body {
 		line-height: 1.57;
 		color: var(--text-header);
 		
-		// Убрали общий transition, чтобы не было лишних движений блока
-		// transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-
 		// Логотип исключаем из анимации текста
 		&.logo {
 			transition: filter 0.3s ease;
