@@ -1619,6 +1619,16 @@ body {
 .footer {
 	&__header {
 	}
+	&__bottom {
+	}
+
+	&__copy {
+		text-align: center;
+		padding-block: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 2.14;
+		color: var(--text-header);
+	}
 }
 
 // ====== header-footer =========
@@ -1859,6 +1869,7 @@ body {
 	align-items: center;
 	gap: 1.25rem;
 	padding-block: 1.75rem;
+	border-bottom: 0.0625rem solid rgba(70, 163, 88, 0.2);
 
 	@media (max-width: 47.9988rem) {
 		margin-inline: -15px;
@@ -1884,12 +1895,12 @@ body {
 	&__item {
 		width: 100%;
 		display: flex;
-		gap: 0.75rem;
+		@include adaptive-value("gap", 5, 2, 0);
 		align-items: center;
 		font-size: 0.875rem;
 		line-height: 1.57;
 		color: var(--text-header);
-		
+
 		// Логотип исключаем из анимации текста
 		&.logo {
 			transition: filter 0.3s ease;
@@ -1908,10 +1919,7 @@ body {
 		@media (max-width: 61.9988rem) {
 			justify-content: center;
 		}
-		@media (max-width: 29.9988rem) {
-			align-items: start;
-		}
-		
+
 		br {
 			@media (max-width: 29.9988rem) {
 				display: none;
@@ -1927,7 +1935,7 @@ body {
 			justify-content: center;
 			width: 1.25rem;
 			// Оставили переход только для свечения и цвета
-			transition: 
+			transition:
 				color 0.3s ease,
 				filter 0.4s ease;
 		}
@@ -1940,7 +1948,7 @@ body {
 
 			// Изначально линия спрятана
 			&::after {
-				content: '';
+				content: "";
 				position: absolute;
 				bottom: -2px;
 				left: 0;
@@ -1967,9 +1975,138 @@ body {
 
 				// Линия выезжает с центра на всю ширину
 				&::after {
-					transform: scaleX(1); 
+					transform: scaleX(1);
 				}
 			}
 		}
+	}
+}
+
+// ==========
+
+.bottom-footer {
+	padding-top: 2rem;
+	padding-bottom: 1.75rem;
+	background: var(--background-catalog);
+	border-bottom: 0.0625rem solid rgba(70, 163, 88, 0.2);
+	&__items {
+		display: grid;
+		// Точно такие же колонки, как сверху
+		grid-template-columns: 11.5rem 224px 214px 384px;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.25rem;
+
+		@media (max-width: 47.9988rem) {
+			margin-inline: -15px;
+			padding-inline: 0.9375rem;
+		}
+		@media (min-width: 47.9988rem) {
+			padding-inline: 1.5625rem;
+		}
+
+		// Планшеты (2 в ряд)
+		@media (max-width: 991.9808px) {
+			grid-template-columns: 1fr 1fr;
+			justify-content: center;
+			text-align: center;
+			gap: 1.875rem;
+		}
+
+		// Мобильные (1 в ряд)
+		@media (max-width: 29.9988rem) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__item {
+	}
+
+	&__social {
+	}
+}
+.item-bottom {
+	&__button {
+		font-weight: 700;
+		font-size: 1.125rem;
+		color: var(--text-header);
+		margin-bottom: 0.5rem;
+
+			width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.25rem;
+		cursor: default;
+		position: relative;
+		._init & {
+			cursor: pointer;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0.625rem;
+				top: 50%;
+				background-color: var(--text-header);
+				height: 0.125rem;
+				width: 0.625rem;
+				transition: transform 0.5s ease 0s;
+			}
+			&::before {
+				transform: translate(-70%, -50%) rotate(40deg);
+			}
+			&::after {
+				transform: translate(0, -50%) rotate(-40deg);
+			}
+			&._active {
+				&::before {
+					transform: translateX(-70%) rotate(-40deg);
+				}
+				&::after {
+					transform: rotate(40deg);
+				}
+			}
+		}
+	}
+
+	&__list {
+	}
+
+	&__link {
+		font-size: 0.875rem;
+		line-height: 2.14;
+		color: var(--text-header);
+		transition: color 0.5s;
+		&:hover{
+			color: var(--green);
+		}
+	}
+}
+.social-bottom {
+	&__media {
+	}
+
+	&__accept {
+	}
+}
+.media-bottom {
+	&__title {
+	}
+
+	&__items {
+	}
+
+	&__item {
+	}
+
+	&__item-link {
+	}
+}
+
+.accept-bottom {
+	&__title {
+	}
+
+	&__image {
 	}
 }
