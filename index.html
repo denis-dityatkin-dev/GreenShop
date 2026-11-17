@@ -1190,9 +1190,7 @@
                 class="bottom-footer__item bottom-footer__social social-bottom"
               >
                 <div class="social-bottom__media media-bottom">
-                  <h5 class="media-bottom__title">
-                    Social Media
-                  </h5>
+                  <h5 class="media-bottom__title">Social Media</h5>
                   <ul class="media-bottom__items">
                     <li class="media-bottom__item">
                       <a
@@ -1227,7 +1225,9 @@
                   </ul>
                 </div>
                 <div class="social-bottom__accept accept-bottom">
-                  <h5 class="accept-bottom__title media-bottom__title">We accept</h5>
+                  <h5 class="accept-bottom__title media-bottom__title">
+                    We accept
+                  </h5>
                   <div class="accept-bottom__image">
                     <img src="./images/footer/accept.png" alt="sponsors" />
                   </div>
@@ -1239,6 +1239,41 @@
         </div>
       </footer>
     </div>
+
+    <!-- Мобильная нижняя навигация -->
+    <nav class="mobile-nav">
+      <div class="mobile-nav__bg"></div>
+      <!-- Фон панели -->
+      <div class="mobile-nav__hole"></div>
+      <!-- Прозрачный круг (вырез) -->
+
+      <div class="mobile-nav__container">
+        <a href="#" class="mobile-nav__link active" aria-label="Главная">
+          <span class="icon-home-mobile"></span>
+        </a>
+        <a href="#" class="mobile-nav__link" aria-label="Избранное">
+          <span class="icon-heart-mobile"></span>
+        </a>
+
+        <!-- Центральная кнопка -->
+        <a
+          href="#"
+          class="mobile-nav__link mobile-nav__link--center"
+          aria-label="Корзина"
+        >
+          <span class="">
+            <img src="./images/footer/scan.svg" alt="scan" />
+          </span>
+        </a>
+
+        <a href="#" class="mobile-nav__link" aria-label="История">
+          <span class="icon-busket-mobile"></span>
+        </a>
+        <a href="#" class="mobile-nav__link" aria-label="Профиль">
+          <span class="icon-user-mobile"></span>
+        </a>
+      </div>
+    </nav>
     <script src="js/components/burger.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/components/slider_swiper.js"></script>
@@ -1249,6 +1284,7 @@
     <script src="js/select.js"></script>
     <script src="js/components/filter.js"></script>
     <script src="js/components/forms.js"></script>
+    <script src="js/mobile-nav-footer.js"></script>
     <!-- <script src="js/components/anim.js"></script> -->
   </body>
 </html>
