@@ -1864,7 +1864,7 @@ body {
 	background-color: rgba(70, 163, 88, 0.1);
 	display: grid;
 	// Точно такие же колонки, как сверху
-	grid-template-columns: 11.5rem 14rem 13.375rem 24rem;
+	grid-template-columns: 11.5rem 210px 210px 380px;
 	justify-content: space-between;
 	align-items: center;
 	gap: 1.25rem;
@@ -1982,7 +1982,7 @@ body {
 	}
 }
 
-// ==========
+// ========== bottom-footer ========
 
 .bottom-footer {
 	padding-top: 2rem;
@@ -1992,9 +1992,9 @@ body {
 	&__items {
 		display: grid;
 		// Точно такие же колонки, как сверху
-		grid-template-columns: 11.5rem 224px 214px 384px;
+		grid-template-columns: 11.5rem 184px 184px 354px;
 		justify-content: space-between;
-		align-items: center;
+		align-items: start;
 		gap: 1.25rem;
 
 		@media (max-width: 47.9988rem) {
@@ -2002,17 +2002,19 @@ body {
 			padding-inline: 0.9375rem;
 		}
 		@media (min-width: 47.9988rem) {
-			padding-inline: 1.5625rem;
+			padding-inline: 39 1.5625rem;
 		}
 
-		// Планшеты (2 в ряд)
-		@media (max-width: 991.9808px) {
-			grid-template-columns: 1fr 1fr;
+		// Планшеты (3 в ряд)
+		@media (max-width: 53.6863rem) {
+			grid-template-columns: 1fr 1fr 1fr;
 			justify-content: center;
 			text-align: center;
 			gap: 1.875rem;
 		}
-
+		@media (max-width: 43.8113rem) {
+			grid-template-columns: 1fr 1fr;
+		}
 		// Мобильные (1 в ряд)
 		@media (max-width: 29.9988rem) {
 			grid-template-columns: 1fr;
@@ -2032,7 +2034,7 @@ body {
 		color: var(--text-header);
 		margin-bottom: 0.5rem;
 
-			width: 100%;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -2073,16 +2075,27 @@ body {
 	}
 
 	&__link {
+		text-align: left;
 		font-size: 0.875rem;
 		line-height: 2.14;
 		color: var(--text-header);
 		transition: color 0.5s;
-		&:hover{
+		&:hover {
 			color: var(--green);
 		}
 	}
 }
 .social-bottom {
+	display: flex;
+	flex-direction: column;
+	@include adaptive-value("gap", 30, 20, 0);
+	@media (max-width: 53.6863rem) {
+		text-align: left;
+	}
+	@media (max-width: 479.9808px) {
+		align-items: center;
+		text-align: center;
+	}
 	&__media {
 	}
 
@@ -2091,15 +2104,40 @@ body {
 }
 .media-bottom {
 	&__title {
+		font-weight: 700;
+		font-size: 1.125rem;
+		color: var(--text-header);
+		@include adaptive-value("margin-bottom", 20, 15, 0);
 	}
 
 	&__items {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
 	}
 
 	&__item {
 	}
 
 	&__item-link {
+		display: grid;
+		place-items: center;
+
+		width: 30px;
+		height: 30px;
+		border: 1px solid color-mix(in srgb, var(--green) 20%, transparent);
+		border-radius: 4px;
+		color: var(--green);
+		opacity: 0.6;
+		transition:
+			opacity 0.2s,
+			border-color 0.2s;
+
+		&:hover,
+		&:focus-visible {
+			opacity: 1;
+			border-color: var(--green);
+		}
 	}
 }
 
@@ -2108,5 +2146,6 @@ body {
 	}
 
 	&__image {
+		mix-blend-mode: multiply;
 	}
 }

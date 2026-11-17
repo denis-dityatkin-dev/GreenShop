@@ -1836,7 +1836,7 @@ body {
 .main-footer {
   background-color: rgba(70, 163, 88, 0.1);
   display: grid;
-  grid-template-columns: 11.5rem 14rem 13.375rem 24rem;
+  grid-template-columns: 11.5rem 210px 210px 380px;
   justify-content: space-between;
   align-items: center;
   gap: 1.25rem;
@@ -1942,9 +1942,9 @@ body {
 }
 .bottom-footer__items {
   display: grid;
-  grid-template-columns: 11.5rem 224px 214px 384px;
+  grid-template-columns: 11.5rem 184px 184px 354px;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   gap: 1.25rem;
 }
 @media (max-width: 47.9988rem) {
@@ -1955,15 +1955,20 @@ body {
 }
 @media (min-width: 47.9988rem) {
   .bottom-footer__items {
-    padding-inline: 1.5625rem;
+    padding-inline: 39 1.5625rem;
   }
 }
-@media (max-width: 991.9808px) {
+@media (max-width: 53.6863rem) {
   .bottom-footer__items {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     text-align: center;
     gap: 1.875rem;
+  }
+}
+@media (max-width: 43.8113rem) {
+  .bottom-footer__items {
+    grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 29.9988rem) {
@@ -2010,6 +2015,7 @@ body {
   transform: rotate(40deg);
 }
 .item-bottom__link {
+  text-align: left;
   font-size: 0.875rem;
   line-height: 2.14;
   color: var(--text-header);
@@ -2017,4 +2023,51 @@ body {
 }
 .item-bottom__link:hover {
   color: var(--green);
+}
+
+.social-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + 10 * (100vw - 320px) / 1120);
+}
+@media (max-width: 53.6863rem) {
+  .social-bottom {
+    text-align: left;
+  }
+}
+@media (max-width: 479.9808px) {
+  .social-bottom {
+    align-items: center;
+    text-align: center;
+  }
+}
+.media-bottom__title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text-header);
+  margin-bottom: calc(15px + 5 * (100vw - 320px) / 1120);
+}
+.media-bottom__items {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.media-bottom__item-link {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid color-mix(in srgb, var(--green) 20%, transparent);
+  border-radius: 4px;
+  color: var(--green);
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.media-bottom__item-link:hover, .media-bottom__item-link:focus-visible {
+  opacity: 1;
+  border-color: var(--green);
+}
+
+.accept-bottom__image {
+  mix-blend-mode: multiply;
 }
