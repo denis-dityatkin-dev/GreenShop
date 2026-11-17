@@ -1634,11 +1634,6 @@ body {
   line-height: 2.14;
   color: var(--text-header);
 }
-@media (max-width: 47.9988rem) {
-  .footer__copy {
-    padding-bottom: 7.5rem;
-  }
-}
 
 .header-footer {
   display: flex;
