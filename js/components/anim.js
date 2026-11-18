@@ -1,38 +1,58 @@
 "use strict"
 
-// let documentActions = (e) => {
-// 	const targetElement = e.target
-// 	if (targetElement.closest('.icon-menu')) {
-// 		document.documentElement.classList.toggle('open-menu')
-// 	}
-// }
-// document.addEventListener('click', documentActions)
-
-
 const options = {
 	root: null,
-	rootMargin: "0px 0px 0px 0px",
-	// Відсоток від розміру об'єкту.
-	// При появі якого спрацьовує подія
-	// Де 0 це будь яка поява
-	// 1 це повна поява об'кта в в'юпорті
+	rootMargin: "0px 0px -50px 0px",
 	threshold: 0.2,
 }
+
 const callback = (entries, observer) => {
 	entries.forEach(entry => {
 		const currentElement = entry.target
 		if (entry.isIntersecting) {
 			currentElement.classList.add('--animate')
-			//console.log('я тебе бачу')
 		} else {
 			currentElement.classList.remove('--animate')
-			//console.log('я тебе не бачу')
 		}
 	})
 }
+
 const observer = new IntersectionObserver(callback, options)
 
-const animElements = document.querySelectorAll('[class*="--anim"]')
+// Ищем секции с классом .anim (а не [class*="--anim"])
+const animElements = document.querySelectorAll('.anim')
 animElements.forEach(animElement => {
 	observer.observe(animElement)
 })
+// "use strict"
+
+// const options = {
+// 	root: null,
+// 	rootMargin: "0px 0px 0px 0px", // убрал отрицательный отступ — он мешает
+// 	threshold: 0.2, // снизил порог — сработает раньше
+// }
+
+// const callback = (entries, observer) => {
+// 	entries.forEach(entry => {
+// 		const currentElement = entry.target
+// 		if (entry.isIntersecting) {
+// 			// добавляем --animate самой секции (на случай если SCSS ждёт его у родителя)
+// 			currentElement.classList.add('--animate')
+
+// 			// и всем потомкам с классами anim--*
+// 			const children = currentElement.querySelectorAll('[class*="anim--"]')
+// 			children.forEach(child => child.classList.add('--animate'))
+
+// 			// отписываемся — анимация должна сработать 1 раз
+// 			observer.unobserve(currentElement)
+// 		}
+// 	})
+// }
+
+// const observer = new IntersectionObserver(callback, options)
+
+// // Наблюдаем за секциями с классом .anim
+// const animElements = document.querySelectorAll('.anim')
+// animElements.forEach(animElement => {
+// 	observer.observe(animElement)
+// })

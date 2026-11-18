@@ -1,10 +1,10 @@
 ﻿// Подключение шрифтов только в самом верху
+
 @import "adaptive-value"; // Импорт локального scss (без расширения)
 @import "font-icons"; // Импорт локального scss (без расширения)
 @import "burgers"; // Импорт локального scss
 @import "shop"; // Импорт локального scss
-// @import "components";
-// @import "anim";
+@import "_anim";
 
 $maxWidth: 1440;
 $maxWidthContainer: 1230;
@@ -19,9 +19,6 @@ $maxWidthContainer: 1230;
 	--color-border-pag: #e5e5e5;
 	--placeholder: #acacac;
 	--color-icon-mobile: #d9d9d9;
-	// --text-primary: #db574d;
-	// --text-muted: rgba(16, 16, 16, 0.6);
-	// --text-inverse: #fff;
 }
 
 // color: var(--text-default);
@@ -2160,7 +2157,10 @@ body {
 	height: 75px;
 	background: transparent;
 	box-sizing: border-box;
-	transition: transform 0.4s ease-in-out, opacity 0.3s ease, visibility 0.3s ease;
+	transition:
+		transform 0.4s ease-in-out,
+		opacity 0.3s ease,
+		visibility 0.3s ease;
 
 	@media (max-width: 767.98px) {
 		display: block;
