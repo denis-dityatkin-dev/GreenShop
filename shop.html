@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="fonts/font.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Green Shop</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header id="navbar" class="header">
+        <div class="header__container">
+          <a data-goto=".wrapper" href="#" class="header__logo logo">
+            <img src="./images/logo.svg" alt="logo" />
+          </a>
+          <div class="header__menu menu menu-header">
+            <nav id="menu" class="menu-header__body menu__body">
+              <ul class="menu-header__list menu__list">
+                <li class="menu-header__item menu__item">
+                  <a
+                    href="index.html"
+                    class="menu__link"
+                    >Home</a
+                  >
+                </li>
+                <li class="menu-header__item menu__item">
+                  <a data-goto=".wrapper" href="#" class="menu__link active-link">Shop</a>
+                </li>
+                <li class="menu-header__item menu__item">
+                  <a data-goto="" href="index.html" class="menu__link"
+                    >Plant Care</a
+                  >
+                </li>
+                <li class="menu-header__item menu__item">
+                  <a data-goto="" href="index.html" class="menu__link">Blogs</a>
+                </li>
+              </ul>
+              <div class="header__actions-hide">
+                <a
+                  href="#"
+                  class="actions-header__item actions-header__cart icon-busket"
+                ></a>
+                <a
+                  href="#"
+                  class="button actions-header__item actions-header__login icon-logout"
+                  >Login</a
+                >
+              </div>
+            </nav>
+          </div>
+          <div class="header__actions actions-header">
+            <a
+              href="#"
+              class="actions-header__item actions-header__search icon-search"
+            ></a>
+            <a
+              href="#"
+              class="actions-header__item actions-header__cart-hide icon-busket"
+            ></a>
+            <a
+              href="#"
+              class="button actions-header__login actions-header__login-hide icon-logout"
+              >Login</a
+            >
+          </div>
+          <div class="header__button">
+            <button type="button" class="menu__icon icon-menu">
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+				<section class="shop">
+					<div class="shop__container">
+						<div class="shop__gallery gallery-shop">
+							<div class="product-gallery">
+								<!-- Основной слайдер -->
+								<div class="product-gallery__main swiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<div class="product-gallery__image swiper-zoom-container">
+												<img src="./images/shop/main.png" alt="Barberton Daisy" />
+											</div>
+										</div>
+										<div class="swiper-slide">
+											<div class="product-gallery__image swiper-zoom-container">
+												<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+											</div>
+										</div>
+										<div class="swiper-slide">
+											<div class="product-gallery__image swiper-zoom-container">
+												<img src="./images//shop/main.png" alt="Barberton Daisy" />
+											</div>
+										</div>
+										<div class="swiper-slide">
+											<div class="product-gallery__image swiper-zoom-container">
+												<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+											</div>
+										</div>
+									</div>
+
+									<!-- Кнопка поиска / лупа -->
+									<button type="button" class="product-gallery__zoom icon-search" aria-label="Увеличить"></button>
+								</div>
+
+								<!-- Миниатюры -->
+								<div class="product-gallery__thumbs swiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Модальное окно для полноэкранной галереи -->
+							<div class="gallery-modal" id="gallery-modal">
+								<button type="button" class="gallery-modal__close icon-close" aria-label="Закрыть"></button>
+								<div class="gallery-modal__swiper swiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+										</div>
+									</div>
+									<div class="swiper-button-next"></div>
+									<div class="swiper-button-prev"></div>
+								</div>
+							</div>
+						</div>
+						<div class="shop__description description-shop"></div>
+					</div>
+				</section>
+      </main>
+      <footer class="footer">
+        <div class="footer__container">
+          <div class="footer__header header-footer">
+            <div class="header-footer__items">
+              <!-- Карточка 1 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-1.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Garden Care</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Карточка 2 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-2.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Plant Renovation</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Карточка 3 -->
+              <article class="header-footer__item item-footer">
+                <div class="item-footer__header-image">
+                  <img src="./images/footer/footer-3.svg" alt="flower" />
+                </div>
+                <h5 class="item-footer__header-title">Watering Graden</h5>
+                <div class="item-footer__header-text">
+                  <p>
+                    We are an online plant shop offering a wide range of cheap
+                    and trendy plants.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Форма (теперь она тоже карточка внутри сетки) -->
+              <div class="header-footer__item header-footer__form form__footer">
+                <h5 class="form__footer-title">
+                  Would you like to join newsletters?
+                </h5>
+                <form
+                  id="form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  class="form__footer-form footer-form__body validate-form"
+                >
+                  <div class="footer-form__item form__item">
+                    <label for="email" class="form__label"></label>
+                    <input
+                      autocomplete="off"
+                      id="email"
+                      type="email"
+                      placeholder="enter your email address..."
+                      name="email"
+                      class="footer-form__input form__input _req _email"
+                    />
+                  </div>
+                  <!-- Скрытые поля для web3forms -->
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="5cadd7bf-4130-4122-a875-c6]01816d4a"
+                  />
+                  <input
+                    type="hidden"
+                    name="to"
+                    value="den04101990@gmail.com"
+                  />
+                  <input
+                    type="hidden"
+                    name="subject"
+                    value="Новое сообщение с сайта"
+                  />
+                  <button
+                    type="submit"
+                    class="footer-form__button form__button button"
+                  >
+                    Join
+                  </button>
+                </form>
+                <div class="form__footer-text">
+                  <p>
+                    We usually post offers and challenges in newsletter. We’re
+                    your online houseplant destination. We offer a wide range of
+                    houseplants and accessories shipped directly from our
+                    (green)house to yours!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__main main-footer">
+            <!-- Логотип -->
+            <a data-goto=".wrapper" href="#" class="main-footer__item logo">
+              <img src="./images/logo.svg" alt="logo" />
+            </a>
+
+            <!-- Адрес (не ссылка, но с ховером) -->
+            <a href="#" class="main-footer__item icon-location">
+              <span>
+                70 West Buckingham Ave.<br />
+                Farmingdale, NY 11735
+              </span>
+            </a>
+
+            <!-- Почта -->
+            <a
+              href="mailto:contact@greenshop.com"
+              class="main-footer__item icon-message"
+            >
+              <span>contact@greenshop.com</span>
+            </a>
+
+            <!-- Телефон -->
+            <a href="tel:+8801911717490" class="main-footer__item icon-phone">
+              <span>+88 01911 717 490</span>
+            </a>
+          </div>
+          <div class="footer__bottom bottom-footer">
+            <div data-spollers="767.98" class="bottom-footer__items">
+              <div class="bottom-footer__item item-bottom">
+                <button data-spoller type="button" class="item-bottom__button">
+                  My Account
+                </button>
+                <ul class="item-bottom__list">
+                  <li class="item-bottom__link"><a href="#">My Account</a></li>
+                  <li class="item-bottom__link"><a href="#">Our stores</a></li>
+                  <li class="item-bottom__link"><a href="#">Contact us</a></li>
+                  <li class="item-bottom__link"><a href="#">Career</a></li>
+                  <li class="item-bottom__link"><a href="#">Specials</a></li>
+                </ul>
+              </div>
+              <div class="bottom-footer__item item-bottom">
+                <button data-spoller type="button" class="item-bottom__button">
+                  Help &amp; Guide
+                </button>
+                <ul class="item-bottom__list">
+                  <li class="item-bottom__link"><a href="#">Help Center</a></li>
+                  <li class="item-bottom__link"><a href="#">How to Buy</a></li>
+                  <li class="item-bottom__link">
+                    <a href="#">Shipping &amp; Delivery</a>
+                  </li>
+                  <li class="item-bottom__link">
+                    <a href="#">Product Policy</a>
+                  </li>
+                  <li class="item-bottom__link">
+                    <a href="#">How to Return</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="bottom-footer__item item-bottom">
+                <button data-spoller type="button" class="item-bottom__button">
+                  Categories
+                </button>
+                <ul class="item-bottom__list">
+                  <li class="item-bottom__link">
+                    <a href="#">House Plants</a>
+                  </li>
+                  <li class="item-bottom__link">
+                    <a href="#">Potter Plants</a>
+                  </li>
+                  <li class="item-bottom__link"><a href="#">Seeds</a></li>
+                  <li class="item-bottom__link">
+                    <a href="#">Small Plants</a>
+                  </li>
+                  <li class="item-bottom__link"><a href="#">Accessories</a></li>
+                </ul>
+              </div>
+              <div
+                class="bottom-footer__item bottom-footer__social social-bottom"
+              >
+                <div class="social-bottom__media media-bottom">
+                  <h5 class="media-bottom__title">Social Media</h5>
+                  <ul class="media-bottom__items">
+                    <li class="media-bottom__item">
+                      <a
+                        href="#"
+                        class="media-bottom__item-link icon-facebook"
+                      ></a>
+                    </li>
+                    <li class="media-bottom__item">
+                      <a
+                        href="#"
+                        class="media-bottom__item-link icon-instagram"
+                      ></a>
+                    </li>
+                    <li class="media-bottom__item">
+                      <a
+                        href="#"
+                        class="media-bottom__item-link icon-twitter"
+                      ></a>
+                    </li>
+                    <li class="media-bottom__item">
+                      <a
+                        href="#"
+                        class="media-bottom__item-link icon-linkedin"
+                      ></a>
+                    </li>
+                    <li class="media-bottom__item">
+                      <a
+                        href="#"
+                        class="media-bottom__item-link icon-union"
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="social-bottom__accept accept-bottom">
+                  <h5 class="accept-bottom__title media-bottom__title">
+                    We accept
+                  </h5>
+                  <div class="accept-bottom__image">
+                    <img src="./images/footer/accept.png" alt="sponsors" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__copy">© 2021 GreenShop. All Rights Reserved.</div>
+        </div>
+      </footer>
+    </div>
+    <!-- Мобильная нижняя навигация -->
+    <nav class="mobile-nav">
+      <div class="mobile-nav__bg"></div>
+      <!-- Фон панели -->
+      <div class="mobile-nav__hole"></div>
+      <!-- Прозрачный круг (вырез) -->
+
+      <div class="mobile-nav__container">
+        <a href="#" class="mobile-nav__link active" aria-label="Главная">
+          <span class="icon-home-mobile"></span>
+        </a>
+        <a href="#" class="mobile-nav__link" aria-label="Избранное">
+          <span class="icon-heart-mobile"></span>
+        </a>
+
+        <!-- Центральная кнопка -->
+        <a
+          href="#"
+          class="mobile-nav__link mobile-nav__link--center"
+          aria-label="Корзина"
+        >
+          <span class="">
+            <img src="./images/footer/scan.svg" alt="scan" />
+          </span>
+        </a>
+
+        <a href="#" class="mobile-nav__link" aria-label="История">
+          <span class="icon-busket-mobile"></span>
+        </a>
+        <a href="#" class="mobile-nav__link" aria-label="Профиль">
+          <span class="icon-user-mobile"></span>
+        </a>
+      </div>
+    </nav>
+    <script src="js/components/burger.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/components/slider_swiper.js"></script>
+    <script src="js/components/float-head.js"></script>
+    <script src="js/components/spoller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="js/range.js"></script>
+    <script src="js/select.js"></script>
+    <script src="js/components/filter.js"></script>
+    <script src="js/components/forms.js"></script>
+    <script src="js/mobile-nav-footer.js"></script>
+    <!-- <script src="js/components/anim.js"></script> -->
+  </body>
+</html>

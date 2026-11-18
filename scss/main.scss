@@ -2,6 +2,7 @@
 @import "adaptive-value"; // Импорт локального scss (без расширения)
 @import "font-icons"; // Импорт локального scss (без расширения)
 @import "burgers"; // Импорт локального scss
+@import "shop"; // Импорт локального scss
 // @import "components";
 // @import "anim";
 
@@ -161,9 +162,6 @@ body {
 	}
 
 	&__list {
-		@media (max-width: 47.9988rem) {
-			// flex-grow: 1;
-		}
 	}
 
 	&__item {
@@ -237,7 +235,7 @@ body {
 
 		@media (max-width: 47.9988rem) {
 			flex-direction: column;
-			align-items: end;
+			align-items: flex-end;
 
 			&:not(:last-child) {
 				margin-bottom: 1.25rem;
@@ -2007,7 +2005,7 @@ body {
 		}
 
 		// Планшеты (3 в ряд)
-		@media (max-width: 53.6863rem) {
+		@media (max-width: 55.5613rem) {
 			grid-template-columns: 1fr 1fr 1fr;
 			justify-content: center;
 			text-align: center;
@@ -2090,7 +2088,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	@include adaptive-value("gap", 30, 20, 0);
-	@media (max-width: 53.6863rem) {
+	@media (max-width: 55.5613rem) {
 		text-align: left;
 	}
 	@media (max-width: 479.9808px) {
@@ -2161,11 +2159,20 @@ body {
 	z-index: 40;
 	height: 75px;
 	background: transparent;
-	
-	transition: transform 0.4s ease-in-out;
+	box-sizing: border-box;
+	transition: transform 0.4s ease-in-out, opacity 0.3s ease, visibility 0.3s ease;
 
 	@media (max-width: 767.98px) {
 		display: block;
+	}
+
+	// 🔧 Скрываем панель при открытом бургер-меню
+	body._menu-open & {
+		transform: translateY(115px) !important;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		padding-right: var(--scrollbar-width, 0px);
 	}
 
 	&__bg {
@@ -2188,8 +2195,12 @@ body {
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		max-width: 100vw;
 		height: 100%;
 		padding: 0 1rem;
+		gap: 0.5rem;
+		box-sizing: border-box;
+		margin: 0 auto;
 	}
 
 	&__link {
@@ -2198,10 +2209,11 @@ body {
 		align-items: center;
 		width: 3rem;
 		height: 3rem;
+		flex: 0 0 3rem;
 		border-radius: 50%;
 		color: var(--color-icon-mobile);
 		font-size: 1.25rem;
-		transition: all 0.3s ease;
+		transition: color 0.3s ease;
 
 		&:hover {
 			color: var(--text-header);
@@ -2214,11 +2226,10 @@ body {
 		&--center {
 			width: 4.0625rem;
 			height: 4.0625rem;
+			flex: 0 0 4.0625rem;
 			margin-top: -75px;
-			
 			background: linear-gradient(180deg, rgba(70, 163, 88, 0.4) -16.92%, #46a358 109.23%);
-			box-shadow: 0 10px 20px 0 rgba(70, 163, 88, 0.3); 
-			
+			box-shadow: 0 10px 20px 0 rgba(70, 163, 88, 0.3);
 			font-size: 1.75rem;
 			z-index: 10;
 
@@ -2231,16 +2242,13 @@ body {
 
 			&:hover {
 				background: #3d8b4c;
-				transform: scale(1.05);
 			}
 		}
 	}
 }
 
-// Убираем padding-bottom у body — он больше не нужен
-// Вместо этого добавляем отступ внизу main, чтобы контент не заезжал под панель
 @media (max-width: 767.98px) {
 	main {
-		padding-bottom: 75px; // Высота панели
+		padding-bottom: 75px;
 	}
 }

@@ -1,47 +1,73 @@
+// ========== MOBILE NAV (появление при скролле вниз / скрытие при скролле вверх) ==========
 document.addEventListener("DOMContentLoaded", () => {
   const mobileNav = document.querySelector('.mobile-nav');
   const burgerButton = document.querySelector('.menu__icon');
 
   if (!mobileNav) return;
 
-  // 🔧 НАСТРОЙКА: На сколько пикселей прятать панель вниз
-  // 75px — высота панели
-  // + 40px — чтобы кнопка (которая выступает вверх) тоже спряталась
-  const HIDE_OFFSET = 115; // <-- Регулируйте это значение!
+  const HIDE_OFFSET = 115;
+  const SCROLL_THRESHOLD = 50;
 
   let lastScrollTop = 0;
+  let ticking = false;
 
-  // 1. Логика скрытия при скролле
-  window.addEventListener('scroll', () => {
-    // Если меню открыто — панель не трогаем
-    if (document.body.classList.contains('_menu-open') || burgerButton?.classList.contains('_active')) {
+  const hideNav = () => {
+    mobileNav.style.transform = `translateY(${HIDE_OFFSET}px)`;
+    mobileNav.style.opacity = '0';
+    mobileNav.style.visibility = 'hidden';
+    mobileNav.style.pointerEvents = 'none';
+  };
+
+  const showNav = () => {
+    mobileNav.style.transform = 'translateY(0)';
+    mobileNav.style.opacity = '1';
+    mobileNav.style.visibility = 'visible';
+    mobileNav.style.pointerEvents = 'auto';
+  };
+
+  const updateMobileNav = () => {
+    // Если меню открыто — панель не трогаем (её скрывает CSS через body._menu-open)
+    if (document.body.classList.contains('_menu-open')) {
+      ticking = false;
       return;
     }
 
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop && scrollTop > 50) {
-      // Скролл вниз — прячем
-      mobileNav.style.transform = `translateY(${HIDE_OFFSET}px)`;
-    } else {
-      // Скролл вверх — показываем
-      mobileNav.style.transform = 'translateY(0)';
+    if (scrollTop <= SCROLL_THRESHOLD) {
+      hideNav();
+    } else if (scrollTop > lastScrollTop) {
+      showNav();
+    } else if (scrollTop < lastScrollTop) {
+      hideNav();
     }
+
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateMobileNav);
+      ticking = true;
+    }
   }, { passive: true });
 
-  // 2. Скрытие при открытии бургер-меню
+  // При закрытии меню синхронизируем lastScrollTop, чтобы логика скролла работала корректно
   if (burgerButton) {
     burgerButton.addEventListener('click', () => {
-      const isMenuOpen = burgerButton.classList.contains('_active') || document.body.classList.contains('_menu-open');
-
-      if (isMenuOpen) {
-        // Меню открылось — прячем панель глубоко вниз
-        mobileNav.style.transform = `translateY(${HIDE_OFFSET}px)`;
-      } else {
-        // Меню закрылось — возвращаем панель
-        mobileNav.style.transform = 'translateY(0)';
-      }
+      requestAnimationFrame(() => {
+        const isMenuOpen = document.body.classList.contains('_menu-open');
+        if (!isMenuOpen) {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          lastScrollTop = scrollTop;
+          if (scrollTop > SCROLL_THRESHOLD) {
+            showNav();
+          } else {
+            hideNav();
+          }
+        }
+      });
     });
   }
 });
