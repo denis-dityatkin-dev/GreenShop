@@ -5,6 +5,7 @@
 @import "burgers"; // Импорт локального scss
 @import "shop"; // Импорт локального scss
 @import "_anim";
+@import "_starReting";
 
 $maxWidth: 1440;
 $maxWidthContainer: 1230;
@@ -63,6 +64,16 @@ body {
 		background-color: var(--white);
 		color: var(--green);
 		border: 0.0625rem solid var(--green);
+	}
+	&-rev {
+		background-color: var(--white);
+		border: 0.0625rem solid var(--green);
+		transition: all 0.5s;
+		&:hover {
+			background-color: var(--green);
+			color: var(--white);
+			
+		}
 	}
 }
 
