@@ -236,6 +236,9 @@ body._menu-open .menu__body::before {
   left: 0;
 }
 
+.shop {
+  padding-top: 114px;
+}
 /* ================ Базовые keyframes ================== */
 @keyframes fadeRight {
   0% {
