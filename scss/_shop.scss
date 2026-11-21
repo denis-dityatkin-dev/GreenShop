@@ -1,32 +1,69 @@
+// Подключение шрифтов только в самом верху
+
+@import "adaptive-value"; // Импорт локального scss (без расширения)
+@import "font-icons"; // Импорт локального scss (без расширения)
+@import "burgers"; // Импорт локального scss
+@import "_anim";
+@import "_starReting";
+
+$maxWidth: 1440;
+$maxWidthContainer: 1230;
+
+:root {
+	--text-default: #727272;
+	--text-header: #3d3d3d;
+	--green: #46a358;
+	--white: #fff;
+	--background-catalog: #fbfbfb;
+	--color-price: #a5a5a5;
+	--color-border-pag: #e5e5e5;
+	--placeholder: #acacac;
+	--color-icon-mobile: #d9d9d9;
+}
 .shop {
-padding-top: 114px;
-		&__container {
-		}
+	padding-top: 7.125rem;
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
 
-		&__title {
+	&__title {
+		color: var(--text-header);
+		a {
+			font-weight: 700;
+			transition: color 0.5s;
+			&:hover{
+				color: var(--green);
+			}
 		}
+	}
+	&__body {
+		display: flex;
+		@include adaptive-value("gap", 52, 30, 0);
+		@media (max-width: 991.9808px) {
+			flex-direction: column;
+		}
+	}
+	&__gallery {
+	}
 
-		&__gallery {
-		}
-
-		&__description {
-		}
+	&__description {
+	}
 }
 .gallery-shop {
 }
 .product-gallery {
+	&__main {
+	}
 
-		&__main {
-		}
+	&__image {
+	}
 
-		&__image {
-		}
+	&__zoom {
+	}
 
-		&__zoom {
-		}
-
-		&__thumbs {
-		}
+	&__thumbs {
+	}
 }
 .swiper {
 }
@@ -39,101 +76,94 @@ padding-top: 114px;
 .icon-search {
 }
 .gallery-modal {
+	&__close {
+	}
 
-		&__close {
-		}
-
-		&__swiper {
-		}
+	&__swiper {
+	}
 }
 .icon-close {
 }
 .description-shop {
+	&__header {
+	}
 
-		&__header {
-		}
+	&__short {
+	}
 
-		&__short {
-		}
+	&__size {
+	}
 
-		&__size {
-		}
+	&__controlls {
+	}
 
-		&__controlls {
-		}
+	&__tags {
+	}
 
-		&__tags {
-		}
-
-		&__social {
-		}
+	&__social {
+	}
 }
 .header-shop {
+	&__title {
+	}
 
-		&__title {
-		}
+	&__body {
+	}
 
-		&__body {
-		}
+	&__price {
+	}
 
-		&__price {
-		}
+	&__rating {
+	}
 
-		&__rating {
-		}
-
-		&__customer {
-		}
+	&__customer {
+	}
 }
 .rating {
+	&_set {
+	}
 
-		&_set {
-		}
+	&__body {
+	}
 
-		&__body {
-		}
+	&__active {
+	}
 
-		&__active {
-		}
+	&__items {
+	}
 
-		&__items {
-		}
+	&__item {
+	}
 
-		&__item {
-		}
-
-		&__value {
-		}
+	&__value {
+	}
 }
 .short-shop {
+	&__sub-title {
+	}
 
-		&__sub-title {
-		}
-
-		&__text {
-		}
+	&__text {
+	}
 }
 .size-shop {
+	&__sub-title {
+	}
 
-		&__sub-title {
-		}
+	&__items {
+	}
 
-		&__items {
-		}
-
-		&__item {
-		}
+	&__item {
+	}
 }
 .controlls-shop {
+	&__counter {
+	}
 
-		&__counter {
-		}
+	&__buttons {
+	}
 
-		&__buttons {
-		}
-
-		&__buton {
-		}
+	&__buton {
+	}
 }
 .button {
 }
@@ -146,14 +176,116 @@ padding-top: 114px;
 .tags-item {
 }
 .social-shop {
+	&__title {
+	}
 
-		&__title {
-		}
+	&__items {
+	}
 
-		&__items {
-		}
-
-		&__item {
-		}
+	&__item {
+	}
 }
+// ... ваши импорты и переменные ...
 
+.product-gallery {
+    // Общая обертка
+    &__body {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+
+        @media (max-width: 767.98px) {
+            flex-direction: column-reverse;
+            gap: 15px;
+        }
+    }
+
+    // Главный слайдер
+    &__main {
+        width: 100%;
+        // Убираем жесткую высоту, Swiper сам подстроится под картинку
+        // Но чтобы картинка не была гигантской, зададим max-height
+        background-color: #fbfbfb;
+        border-radius: 10px;
+        
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto; // Позволяем слайду тянуться по картинке
+        }
+
+        img {
+            max-width: 100%;
+            height: auto; // Картинка сохраняет пропорции
+            max-height: 500px; // Ограничиваем максимальную высоту
+            object-fit: contain;
+        }
+
+        @media (max-width: 767.98px) {
+            img {
+                max-height: 350px;
+            }
+        }
+    }
+
+    // Кнопка лупы
+    &__zoom {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 10;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-default);
+        transition: color 0.3s;
+        
+        &:hover {
+            color: var(--green);
+        }
+    }
+
+    // Блок с миниатюрами
+    &__thumbs {
+        width: 100px;
+        flex-shrink: 0;
+        // Высоту тоже не задаем жестко! Swiper посчитает сам
+        
+        // Для десктопа выстраиваем в колонку
+        @media (min-width: 768px) {
+            .swiper-wrapper {
+                flex-direction: column;
+            }
+        }
+
+        .swiper-slide {
+            width: 100% !important;
+            height: 100px !important; // Высота одной миниатюры
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            overflow: hidden;
+            opacity: 0.7;
+            transition: opacity 0.3s, border-color 0.3s;
+            background: #fbfbfb;
+
+            &:hover,
+            &.swiper-slide-thumb-active {
+                opacity: 1;
+                border-color: var(--green);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            @media (max-width: 767.98px) {
+                width: 80px !important;
+                height: 80px !important;
+            }
+        }
+    }
+}

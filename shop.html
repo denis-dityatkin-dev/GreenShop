@@ -86,139 +86,120 @@
 				<section class="shop">
 					<div class="shop__container">
 						<div class="shop__title"><a href="index.html">Home</a> / Shop</div>
-						<div class="shop__gallery gallery-shop">
-							<div class="product-gallery">
-								<!-- Основной слайдер -->
-								<div class="product-gallery__main swiper">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide">
-											<div class="product-gallery__image swiper-zoom-container">
-												<img src="./images/shop/main.png" alt="Barberton Daisy" />
-											</div>
-										</div>
-										<div class="swiper-slide">
-											<div class="product-gallery__image swiper-zoom-container">
-												<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-											</div>
-										</div>
-										<div class="swiper-slide">
-											<div class="product-gallery__image swiper-zoom-container">
-												<img src="./images//shop/main.png" alt="Barberton Daisy" />
-											</div>
-										</div>
-										<div class="swiper-slide">
-											<div class="product-gallery__image swiper-zoom-container">
-												<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-											</div>
-										</div>
-									</div>
-
-									<!-- Кнопка поиска / лупа -->
-									<button type="button" class="product-gallery__zoom icon-search" aria-label="Увеличить"></button>
-								</div>
-
-								<!-- Миниатюры -->
-								<div class="product-gallery__thumbs swiper">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Модальное окно для полноэкранной галереи -->
-							<div class="gallery-modal" id="gallery-modal">
-								<button type="button" class="gallery-modal__close icon-close" aria-label="Закрыть"></button>
-								<div class="gallery-modal__swiper swiper">
-									<div class="swiper-wrapper">
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
-										</div>
-										<div class="swiper-slide">
-											<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
-										</div>
-									</div>
-									<!-- <div class="swiper-button-next"></div>
-									<div class="swiper-button-prev"></div> -->
-								</div>
-							</div>
-						</div>
-							<div class="shop__description description-shop">
-								<div class="description-shop__header header-shop">
-									<h2 class="header-shop__title">Barberton Daisy</h2>
-									<div class="header-shop__body">
-										<div class="header-shop__price">$119.00</div>
-										<div class="header-shop__rating">
-											<div class="rating rating_set">
-												<div class="rating__body">
-													<div class="rating__active"></div>
-														<div class="rating__items">
-															<input type="radio" class="rating__item" name="rating" value="1">
-															<input type="radio" class="rating__item" name="rating" value="2">
-															<input type="radio" class="rating__item" name="rating" value="3">
-															<input type="radio" class="rating__item" name="rating" value="4">
-															<input type="radio" class="rating__item" name="rating" value="5">
+						<div class="shop__body">
+								<div class="shop__gallery gallery-shop">
+										<div class="product-gallery">
+												<!-- Обертка для слайдера и миниатюр -->
+												<div class="product-gallery__body">
+														
+														<!-- Миниатюры (слева) -->
+														<div class="product-gallery__thumbs swiper">
+																<div class="swiper-wrapper">
+																		<div class="swiper-slide">
+																				<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																		</div>
+																		<div class="swiper-slide">
+																				<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+																		</div>
+																		<div class="swiper-slide">
+																				<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																		</div>
+																		<div class="swiper-slide">
+																				<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
+																		</div>
+																</div>
 														</div>
-													</div>
-												<div class="rating__value">4</div>
+
+														<!-- Основной слайдер (справа) -->
+														<div class="product-gallery__main swiper">
+																<div class="swiper-wrapper">
+																		<div class="swiper-slide">
+																				<div class="product-gallery__image swiper-zoom-container">
+																						<img src="./images/shop/main.png" alt="Barberton Daisy" />
+																				</div>
+																		</div>
+																		<div class="swiper-slide">
+																				<div class="product-gallery__image swiper-zoom-container">
+																						<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																				</div>
+																		</div>
+																		<div class="swiper-slide">
+																				<div class="product-gallery__image swiper-zoom-container">
+																						<img src="./images/shop/main.png" alt="Barberton Daisy" />
+																				</div>
+																		</div>
+																		<div class="swiper-slide">
+																				<div class="product-gallery__image swiper-zoom-container">
+																						<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																				</div>
+																		</div>
+																</div>
+																<!-- Кнопка поиска / лупа -->
+																<button type="button" class="product-gallery__zoom icon-search" aria-label="Увеличить"></button>
+														</div>
+												</div>
+										</div>
+								</div>
+								<div class="shop__description description-shop">
+									<div class="description-shop__header header-shop">
+										<h2 class="header-shop__title">Barberton Daisy</h2>
+										<div class="header-shop__body">
+											<div class="header-shop__price">$119.00</div>
+											<div class="header-shop__rating">
+												<div class="rating rating_set">
+													<div class="rating__body">
+														<div class="rating__active"></div>
+															<div class="rating__items">
+																<input type="radio" class="rating__item" name="rating" value="1">
+																<input type="radio" class="rating__item" name="rating" value="2">
+																<input type="radio" class="rating__item" name="rating" value="3">
+																<input type="radio" class="rating__item" name="rating" value="4">
+																<input type="radio" class="rating__item" name="rating" value="5">
+															</div>
+														</div>
+													<div class="rating__value">4</div>
+												</div>
+												<div class="header-shop__customer">19 Customer Review</div>
 											</div>
-											<div class="header-shop__customer">19 Customer Review</div>
+										</div>
+									</div>
+									<div class="description-shop__short short-shop">
+										<div class="short-shop__sub-title">Short Description:</div>
+										<div class="short-shop__text">
+											<p>The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. </p>
+										</div>
+									</div>
+									<div class="description-shop__size size-shop">
+										<div class="size-shop__sub-title">Size:</div>
+										<div class="size-shop__items">
+											<div class="size-shop__item">S</div>
+											<div class="size-shop__item">M</div>
+											<div class="size-shop__item">L</div>
+											<div class="size-shop__item">XL</div>
+										</div>
+									</div>
+									<div class="description-shop__controlls controlls-shop">
+										<div class="controlls-shop__counter">1</div>
+										<a class="controlls-shop__buttons">
+											<a href="#" class="controlls-shop__buton button">Buy NOW</a>
+											<a href="#" class="controlls-shop__buton button-rev">Add to cart</a>
+											<a href="#" class="controlls-shop__buton button-rev icon-heart"></a>
+									</div>
+									<div class="description-shop__tags tags-items">
+										<div class="tags-item"><span>SKU: </span>1995751877966</div>
+										<div class="tags-item"><span>Categories: </span>Potter Plants</div>
+										<div class="tags-item"><span>Tags: </span>Home, Garden, Plants</div>
+									</div>
+									<div class="description-shop__social social-shop">
+										<div class="social-shop__title">Share this products:</div>
+										<div class="social-shop__items">
+											<div class="social-shop__item icon-facebook"></div>
+											<div class="social-shop__item icon-twitter"></div>
+											<div class="social-shop__item icon-linkedin"></div>
+											<div class="social-shop__item icon-mail"></div>
 										</div>
 									</div>
 								</div>
-								<div class="description-shop__short short-shop">
-									<div class="short-shop__sub-title">Short Description:</div>
-									<div class="short-shop__text">
-										<p>The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. </p>
-									</div>
-								</div>
-								<div class="description-shop__size size-shop">
-									<div class="size-shop__sub-title">Size:</div>
-									<div class="size-shop__items">
-										<div class="size-shop__item">S</div>
-										<div class="size-shop__item">M</div>
-										<div class="size-shop__item">L</div>
-										<div class="size-shop__item">XL</div>
-									</div>
-								</div>
-								<div class="description-shop__controlls controlls-shop">
-									<div class="controlls-shop__counter">1</div>
-									<a class="controlls-shop__buttons">
-										<a href="#" class="controlls-shop__buton button">Buy NOW</a>
-										<a href="#" class="controlls-shop__buton button-rev">Add to cart</a>
-										<a href="#" class="controlls-shop__buton button-rev icon-heart"></a>
-								</div>
-								<div class="description-shop__tags tags-items">
-									<div class="tags-item"><span>SKU: </span>1995751877966</div>
-									<div class="tags-item"><span>Categories: </span>Potter Plants</div>
-									<div class="tags-item"><span>Tags: </span>Home, Garden, Plants</div>
-								</div>
-								<div class="description-shop__social social-shop">
-									<div class="social-shop__title">Share this products:</div>
-									<div class="social-shop__items">
-										<div class="social-shop__item icon-facebook"></div>
-										<div class="social-shop__item icon-twitter"></div>
-										<div class="social-shop__item icon-linkedin"></div>
-										<div class="social-shop__item icon-mail"></div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</section>
@@ -502,5 +483,6 @@
     <script src="js/mobile-nav-footer.js"></script>
     <script src="js/components/anim.js"></script>
     <script src="js/stars_rating.js"></script>
+    <script src="js/swiper-gallery.js"></script>
   </body>
 </html>
