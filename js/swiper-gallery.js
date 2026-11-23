@@ -1,20 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var thumbsEl  = document.querySelector('.product-gallery__thumbs');
-    var mainEl    = document.querySelector('.product-gallery__main');
-    var modalEl   = document.getElementById('galleryModal');
+    var thumbsEl = document.querySelector('.product-gallery__thumbs');
+    var mainEl   = document.querySelector('.product-gallery__main');
+    var modalEl  = document.getElementById('galleryModal');
 
     if (!thumbsEl || !mainEl) return;
-
     if (typeof Swiper === 'undefined') {
-        console.warn('Swiper не загружен — галерея работает без слайдера');
+        console.warn('Swiper не загружен');
         return;
     }
 
-    // ── 1. Миниатюры ────────────────────────────────────────
+    // ── 1. Главный слайдер ──────────────────────────────────
+    var mainSwiper = new Swiper(mainEl, {
+        spaceBetween: 10,
+        slidesPerView: 1,
+        initialSlide: 1,          // вторая картинка по умолчанию
+        observer: true,
+        observeParents: true,
+        on: {
+            init: function () { this.update(); },
+            imageReady: function () { this.update(); }
+        }
+    });
+
+    // ── 2. Миниатюры ────────────────────────────────────────
     var thumbsSwiper = new Swiper(thumbsEl, {
         spaceBetween: 10,
         slidesPerView: 4,
-        freeMode: true,
         watchSlidesProgress: true,
         observer: true,
         observeParents: true,
@@ -24,50 +35,56 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ── 2. Главный слайдер ──────────────────────────────────
-    var mainSwiper = new Swiper(mainEl, {
-        spaceBetween: 10,
-        slidesPerView: 1,
-        thumbs: { swiper: thumbsSwiper },
-        observer: true,
-        observeParents: true,
-				loop: true,
-        on: {
-            init: function () { this.update(); },
-            imageReady: function () { this.update(); }
+    // ── 3. РУЧНАЯ синхронизация ─────────────────────────────
+    // В HTML класс swiper-slide-thumb-active уже стоит на второй миниатюре.
+    // Эта функция при смене главного слайда снимает его со всех и вешает на нужную.
+    function syncActiveThumb(index) {
+        var thumbs = thumbsEl.querySelectorAll('.swiper-slide');
+        thumbs.forEach(function (s) {
+            s.classList.remove('swiper-slide-thumb-active');
+        });
+        if (thumbs[index]) {
+            thumbs[index].classList.add('swiper-slide-thumb-active');
         }
+    }
+
+    mainSwiper.on('slideChange', function () {
+        syncActiveThumb(mainSwiper.activeIndex);
     });
 
-    // ── 3. Модальная галерея ────────────────────────────────
+    // Клик по миниатюре — переключаем главный
+    thumbsEl.querySelectorAll('.swiper-slide').forEach(function (slide, idx) {
+        slide.addEventListener('click', function () {
+            mainSwiper.slideTo(idx);
+        });
+    });
+
+    // Первичная синхронизация: снимаем активный со всех и вешаем на activeIndex
+    // (учитывает, что в HTML класс уже стоит на второй — это страховка)
+    syncActiveThumb(mainSwiper.activeIndex);
+
+    // ── 4. Модалка ──────────────────────────────────────────
     if (!modalEl) return;
 
     var modalSwiper = null;
     var modalSwiperEl = modalEl.querySelector('.gallery-modal__swiper');
 
     function buildModalSwiper(startIndex) {
-        // Если уже создан — просто переключаем слайд
         if (modalSwiper) {
             modalSwiper.slideTo(startIndex, 0);
             return;
         }
-
         modalSwiper = new Swiper(modalSwiperEl, {
             initialSlide: startIndex || 0,
             spaceBetween: 20,
             slidesPerView: 1,
             observer: true,
             observeParents: true,
-						loop: true,
             navigation: {
                 nextEl: modalEl.querySelector('.gallery-modal__arrow--next'),
                 prevEl: modalEl.querySelector('.gallery-modal__arrow--prev')
             },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true
-            },
-            // Раскомментируйте для зума колёсиком:
-            // zoom: { maxRatio: 3, minRatio: 1 }
+            keyboard: { enabled: true, onlyInViewport: true }
         });
     }
 
@@ -76,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
         modalEl.classList.add('open');
         modalEl.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
-        // Пересчёт после появления (важно!)
         requestAnimationFrame(function () {
             if (modalSwiper) modalSwiper.update();
         });
@@ -88,22 +104,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('modal-open');
     }
 
-    // Клик по большой картинке — открыть модалку на активном слайде
     mainEl.addEventListener('click', function (e) {
-        // Игнорируем клик по кнопке лупы — она обрабатывается отдельно
         if (e.target.closest('.product-gallery__zoom')) return;
-
         var slide = e.target.closest('.swiper-slide');
         if (!slide) return;
-
-        var slides = Array.prototype.slice.call(
-            mainEl.querySelectorAll('.swiper-slide')
-        );
+        var slides = Array.prototype.slice.call(mainEl.querySelectorAll('.swiper-slide'));
         var index = slides.indexOf(slide);
         openModal(index >= 0 ? index : 0);
     });
 
-    // Клик по лупе — тоже открыть модалку
     var zoomBtn = document.querySelector('.product-gallery__zoom');
     if (zoomBtn) {
         zoomBtn.addEventListener('click', function (e) {
@@ -112,34 +121,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Закрытие: клик по фону/крестику (элементы с [data-close])
     modalEl.addEventListener('click', function (e) {
-        if (e.target.closest('[data-close]')) {
-            closeModal();
-        }
+        if (e.target.closest('[data-close]')) closeModal();
     });
 
-    // Клик по пустому месту внутри контента (не по картинке и не по кнопкам)
     var content = modalEl.querySelector('.gallery-modal__content');
     if (content) {
         content.addEventListener('click', function (e) {
             var isImage = e.target.closest('img');
             var isArrow = e.target.closest('.gallery-modal__arrow');
             var isClose = e.target.closest('.gallery-modal__close');
-            if (!isImage && !isArrow && !isClose) {
-                closeModal();
-            }
+            if (!isImage && !isArrow && !isClose) closeModal();
         });
     }
 
-    // Esc — закрыть
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modalEl.classList.contains('open')) {
-            closeModal();
-        }
+        if (e.key === 'Escape' && modalEl.classList.contains('open')) closeModal();
     });
 
-    // ── 4. Пересчёт при ресайзе ─────────────────────────────
     var resizeTimer;
     window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);

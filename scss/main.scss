@@ -2263,3 +2263,21 @@ body {
 		padding-bottom: 75px;
 	}
 }
+
+// ============================================================
+//  ФИКС: рамка миниатюр (в самом конце main.scss!)
+// ============================================================
+
+// .product-gallery__thumbs .swiper-slide {
+//   border: 1px solid transparent !important;
+//   box-sizing: border-box !important;
+//   transition: opacity 0.3s, border-color 0.3s;
+// }
+
+// .product-gallery__thumbs .swiper-slide:hover {
+//   border-color: var(--green) !important;
+// }
+
+// .product-gallery__thumbs .swiper-slide.swiper-slide-thumb-active {
+//   border-color: var(--green) !important;
+// }
