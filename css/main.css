@@ -953,15 +953,13 @@ body._menu-open .menu__body::before {
   cursor: pointer;
   color: var(--text-default);
   transition: color 0.3s;
-  font-size: 1.25rem;
-  line-height: 1;
   width: 1.875rem;
   height: 1.875rem;
+  border-radius: 50%;
   background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
 }
 .product-gallery__zoom:hover {
   color: var(--green);
@@ -1004,6 +1002,7 @@ body._menu-open .menu__body::before {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+  mix-blend-mode: multiply;
 }
 @media (max-width: 767.98px) {
   .product-gallery__thumbs {
@@ -1012,10 +1011,15 @@ body._menu-open .menu__body::before {
   }
   .product-gallery__thumbs .swiper-wrapper {
     flex-direction: row;
+    flex-wrap: wrap; /* ← разрешаем перенос */
+    justify-content: center; /* ← центрируем по горизонтали */
+    gap: 10px; /* ← отступ между миниатюрами */
+    row-gap: 10px;
   }
   .product-gallery__thumbs .swiper-slide {
     width: 80px !important;
     height: 80px !important;
+    flex-shrink: 0; /* ← не даём сжиматься */
   }
 }
 
