@@ -96,13 +96,13 @@
 														<div class="product-gallery__thumbs swiper">
 																<div class="swiper-wrapper">
 																		<div class="swiper-slide">
-																				<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																				<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
 																		</div>
 																		<div class="swiper-slide">
 																				<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
 																		</div>
 																		<div class="swiper-slide">
-																				<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																				<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
 																		</div>
 																		<div class="swiper-slide">
 																				<img src="./images/shop/mini-2.png" alt="Barberton Daisy" />
@@ -115,12 +115,7 @@
 																<div class="swiper-wrapper">
 																		<div class="swiper-slide">
 																				<div class="product-gallery__image swiper-zoom-container">
-																						<img src="./images/shop/main.png" alt="Barberton Daisy" />
-																				</div>
-																		</div>
-																		<div class="swiper-slide">
-																				<div class="product-gallery__image swiper-zoom-container">
-																						<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																						<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
 																				</div>
 																		</div>
 																		<div class="swiper-slide">
@@ -128,9 +123,14 @@
 																						<img src="./images/shop/main.png" alt="Barberton Daisy" />
 																				</div>
 																		</div>
+																			<div class="swiper-slide">
+																				<div class="product-gallery__image swiper-zoom-container">
+																						<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
+																				</div>
+																		</div>
 																		<div class="swiper-slide">
 																				<div class="product-gallery__image swiper-zoom-container">
-																						<img src="./images/shop/mini-1.png" alt="Barberton Daisy" />
+																						<img src="./images/shop/main.png" alt="Barberton Daisy" />
 																				</div>
 																		</div>
 																</div>
@@ -180,26 +180,28 @@
 									</div>
 									<div class="description-shop__controlls controlls-shop">
 										<div class="controlls-shop__counter">1</div>
-										<a class="controlls-shop__buttons">
-											<a href="#" class="controlls-shop__buton button">Buy NOW</a>
-											<a href="#" class="controlls-shop__buton button-rev">Add to cart</a>
-											<a href="#" class="controlls-shop__buton button-rev icon-heart"></a>
-									</div>
-									<div class="description-shop__tags tags-items">
+										<div class="controlls-shop__buttons">
+												<a href="#" class="controlls-shop__buton button">Buy NOW</a>
+												<a href="#" class="controlls-shop__buton button-rev">Add to cart</a>
+												<a href="#" class="controlls-shop__buton button-rev icon-heart"></a>
+										</div>
+								</div>                                              <!-- ← закрываем .controlls-shop ЗДЕСЬ -->
+
+								<div class="description-shop__tags tags-items">
 										<div class="tags-item"><span>SKU: </span>1995751877966</div>
 										<div class="tags-item"><span>Categories: </span>Potter Plants</div>
 										<div class="tags-item"><span>Tags: </span>Home, Garden, Plants</div>
-									</div>
-									<div class="description-shop__social social-shop">
+								</div>
+								<div class="description-shop__social social-shop">
 										<div class="social-shop__title">Share this products:</div>
 										<div class="social-shop__items">
-											<div class="social-shop__item icon-facebook"></div>
-											<div class="social-shop__item icon-twitter"></div>
-											<div class="social-shop__item icon-linkedin"></div>
-											<div class="social-shop__item icon-mail"></div>
+												<div class="social-shop__item icon-facebook"></div>
+												<div class="social-shop__item icon-twitter"></div>
+												<div class="social-shop__item icon-linkedin"></div>
+												<div class="social-shop__item icon-mail"></div>
 										</div>
-									</div>
 								</div>
+								</div>                                              <!-- ← закрываем .description-shop -->
 						</div>
 					</div>
 				</section>
@@ -470,9 +472,44 @@
         </a>
       </div>
     </nav>
+		<!-- Полноэкранная галерея -->
+		<div class="gallery-modal" id="galleryModal" aria-hidden="true">
+				<div class="gallery-modal__overlay" data-close></div>
+
+				<div class="gallery-modal__content">
+						<!-- Кнопки управления -->
+						<button type="button" class="gallery-modal__arrow gallery-modal__arrow--prev" aria-label="Предыдущее">
+								&#10094;
+						</button>
+						<button type="button" class="gallery-modal__arrow gallery-modal__arrow--next" aria-label="Следующее">
+								&#10095;
+						</button>
+						<button type="button" class="gallery-modal__close" aria-label="Закрыть" data-close>
+								&#10005;
+						</button>
+
+						<!-- Слайдер -->
+						<div class="swiper gallery-modal__swiper">
+								<div class="swiper-wrapper">
+										<div class="swiper-slide">
+												<img src="./images/shop/main.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+												<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+												<img src="./images/shop/main.png" alt="Barberton Daisy" />
+										</div>
+										<div class="swiper-slide">
+												<img src="./images/catalog/catalog-8.png" alt="Barberton Daisy" />
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
     <script src="js/components/burger.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script src="js/components/slider_swiper.js"></script>
+    <!-- <script src="js/components/slider_swiper.js"></script> -->
     <script src="js/components/float-head.js"></script>
     <script src="js/components/spoller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>

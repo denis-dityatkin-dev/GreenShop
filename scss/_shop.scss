@@ -1,8 +1,8 @@
 // Подключение шрифтов только в самом верху
 
-@import "adaptive-value"; // Импорт локального scss (без расширения)
-@import "font-icons"; // Импорт локального scss (без расширения)
-@import "burgers"; // Импорт локального scss
+@import "adaptive-value";
+@import "font-icons";
+@import "burgers";
 @import "_anim";
 @import "_starReting";
 
@@ -10,282 +10,521 @@ $maxWidth: 1440;
 $maxWidthContainer: 1230;
 
 :root {
-	--text-default: #727272;
-	--text-header: #3d3d3d;
-	--green: #46a358;
-	--white: #fff;
-	--background-catalog: #fbfbfb;
-	--color-price: #a5a5a5;
-	--color-border-pag: #e5e5e5;
-	--placeholder: #acacac;
-	--color-icon-mobile: #d9d9d9;
+  --text-default: #727272;
+  --text-header: #3d3d3d;
+  --green: #46a358;
+  --white: #fff;
+  --background-catalog: #fbfbfb;
+  --color-price: #a5a5a5;
+  --color-border-pag: #e5e5e5;
+  --placeholder: #acacac;
+  --color-icon-mobile: #d9d9d9;
 }
+
+// ============================================================
+//  SHOP PAGE
+// ============================================================
+
 .shop {
-	padding-top: 7.125rem;
-	&__container {
-		display: flex;
-		flex-direction: column;
-	}
+  padding-top: 7.125rem;
 
-	&__title {
-		color: var(--text-header);
-		a {
-			font-weight: 700;
-			transition: color 0.5s;
-			&:hover{
-				color: var(--green);
-			}
-		}
-	}
-	&__body {
-		display: flex;
-		@include adaptive-value("gap", 52, 30, 0);
-		@media (max-width: 991.9808px) {
-			flex-direction: column;
-		}
-	}
-	&__gallery {
-	}
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
 
-	&__description {
-	}
+  &__title {
+    color: var(--text-header);
+    margin-bottom: 2rem;
+
+    a {
+      font-weight: 700;
+      transition: color 0.5s;
+
+      &:hover {
+        color: var(--green);
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    @include adaptive-value("gap", 52, 30, 0);
+
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+    }
+  }
+
+  &__gallery {
+    flex: 0 1 50%;
+    min-width: 0;
+
+    @media (max-width: 991.98px) {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+  }
+
+  &__description {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    @media (max-width: 991.98px) {
+      width: 100%;
+    }
+  }
 }
+
+// ============================================================
+//  GALLERY
+// ============================================================
+
 .gallery-shop {
+  width: 100%;
 }
-.product-gallery {
-	&__main {
-	}
-
-	&__image {
-	}
-
-	&__zoom {
-	}
-
-	&__thumbs {
-	}
-}
-.swiper {
-}
-.swiper-wrapper {
-}
-.swiper-slide {
-}
-.swiper-zoom-container {
-}
-.icon-search {
-}
-.gallery-modal {
-	&__close {
-	}
-
-	&__swiper {
-	}
-}
-.icon-close {
-}
-.description-shop {
-	&__header {
-	}
-
-	&__short {
-	}
-
-	&__size {
-	}
-
-	&__controlls {
-	}
-
-	&__tags {
-	}
-
-	&__social {
-	}
-}
-.header-shop {
-	&__title {
-	}
-
-	&__body {
-	}
-
-	&__price {
-	}
-
-	&__rating {
-	}
-
-	&__customer {
-	}
-}
-.rating {
-	&_set {
-	}
-
-	&__body {
-	}
-
-	&__active {
-	}
-
-	&__items {
-	}
-
-	&__item {
-	}
-
-	&__value {
-	}
-}
-.short-shop {
-	&__sub-title {
-	}
-
-	&__text {
-	}
-}
-.size-shop {
-	&__sub-title {
-	}
-
-	&__items {
-	}
-
-	&__item {
-	}
-}
-.controlls-shop {
-	&__counter {
-	}
-
-	&__buttons {
-	}
-
-	&__buton {
-	}
-}
-.button {
-}
-.button-rev {
-}
-.icon-heart {
-}
-.tags-items {
-}
-.tags-item {
-}
-.social-shop {
-	&__title {
-	}
-
-	&__items {
-	}
-
-	&__item {
-	}
-}
-// ... ваши импорты и переменные ...
 
 .product-gallery {
-    // Общая обертка
-    &__body {
-        display: flex;
-        gap: 30px;
-        align-items: flex-start;
+  width: 100%;
 
-        @media (max-width: 767.98px) {
-            flex-direction: column-reverse;
-            gap: 15px;
-        }
+  &__body {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column-reverse;
+      gap: 15px;
+    }
+  }
+
+  // ── Главный слайдер ──────────────────────────────────────
+  &__main {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    background-color: #fbfbfb;
+    border-radius: 10px;
+
+    .swiper-wrapper {
+      align-items: stretch;
     }
 
-    // Главный слайдер
-    &__main {
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 767.98px) {
+      img {
+        max-height: 350px;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // ── Кнопка лупы ──────────────────────────────────────────
+  &__zoom {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-default);
+    transition: color 0.3s;
+    font-size: 1.25rem;
+    line-height: 1;
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+
+  // ── Миниатюры ────────────────────────────────────────────
+  &__thumbs {
+    flex: 0 0 100px;
+    width: 100px;
+    min-width: 0;
+    height: auto;
+
+    // Десктоп: вертикальная колонка
+    @media (min-width: 768px) {
+      .swiper-wrapper {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .swiper-slide {
+      width: 100% !important;
+      height: 100px !important;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      overflow: hidden;
+      opacity: 0.7;
+      transition: opacity 0.3s, border-color 0.3s;
+      background: #fbfbfb;
+      box-sizing: border-box;
+
+      // Ховер — зелёная рамка
+      &:hover {
+        opacity: 1;
+        border-color: var(--green);
+      }
+
+      // Активный слайд — зелёная рамка постоянно
+      &.swiper-slide-thumb-active {
+        opacity: 1;
+        border-color: var(--green);
+      }
+
+      img {
         width: 100%;
-        // Убираем жесткую высоту, Swiper сам подстроится под картинку
-        // Но чтобы картинка не была гигантской, зададим max-height
-        background-color: #fbfbfb;
-        border-radius: 10px;
-        
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: auto; // Позволяем слайду тянуться по картинке
-        }
-
-        img {
-            max-width: 100%;
-            height: auto; // Картинка сохраняет пропорции
-            max-height: 500px; // Ограничиваем максимальную высоту
-            object-fit: contain;
-        }
-
-        @media (max-width: 767.98px) {
-            img {
-                max-height: 350px;
-            }
-        }
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
     }
 
-    // Кнопка лупы
-    &__zoom {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        z-index: 10;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text-default);
-        transition: color 0.3s;
-        
-        &:hover {
-            color: var(--green);
-        }
+    @media (max-width: 767.98px) {
+      width: 100%;
+      flex: 0 0 auto;
+
+      .swiper-wrapper {
+        flex-direction: row;
+      }
+
+      .swiper-slide {
+        width: 80px !important;
+        height: 80px !important;
+      }
+    }
+  }
+}
+
+// ============================================================
+//  DESCRIPTION / RIGHT COLUMN
+// ============================================================
+
+.description-shop {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header-shop {
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-header);
+    margin-bottom: 0.75rem;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__price {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__customer {
+    font-size: 0.875rem;
+    color: var(--text-default);
+  }
+}
+
+.short-shop {
+  &__sub-title {
+    font-weight: 700;
+    color: var(--text-header);
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    color: var(--text-default);
+    line-height: 1.6;
+    font-size: 0.875rem;
+  }
+}
+
+.size-shop {
+  &__sub-title {
+    font-weight: 700;
+    color: var(--text-header);
+    margin-bottom: 0.75rem;
+  }
+
+  &__items {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__item {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-pag);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover,
+    &.active {
+      border-color: var(--green);
+      color: var(--green);
+    }
+  }
+}
+
+.controlls-shop {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__counter {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-pag);
+    border-radius: 50%;
+    font-weight: 700;
+    color: var(--text-header);
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__buton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 1.25rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    white-space: nowrap;
+
+    &.icon-heart {
+      width: 40px;
+      padding: 0;
+    }
+  }
+}
+
+.tags-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-default);
+}
+
+.tags-item {
+  span {
+    color: var(--text-header);
+    font-weight: 700;
+  }
+}
+
+.social-shop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  &__title {
+    font-weight: 700;
+    color: var(--text-header);
+    font-size: 0.875rem;
+  }
+
+  &__items {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--background-catalog);
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--green);
+      color: #fff;
+    }
+  }
+}
+
+// ============================================================
+//  FULLSCREEN GALLERY MODAL
+// ============================================================
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+
+  &.open {
+    display: block;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    cursor: zoom-out;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+
+    @media (max-width: 767.98px) {
+      padding: 60px 20px;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
 
-    // Блок с миниатюрами
-    &__thumbs {
-        width: 100px;
-        flex-shrink: 0;
-        // Высоту тоже не задаем жестко! Swiper посчитает сам
-        
-        // Для десктопа выстраиваем в колонку
-        @media (min-width: 768px) {
-            .swiper-wrapper {
-                flex-direction: column;
-            }
-        }
+    &--prev { left: 20px; }
+    &--next { right: 20px; }
 
-        .swiper-slide {
-            width: 100% !important;
-            height: 100px !important; // Высота одной миниатюры
-            cursor: pointer;
-            border: 1px solid transparent;
-            border-radius: 5px;
-            overflow: hidden;
-            opacity: 0.7;
-            transition: opacity 0.3s, border-color 0.3s;
-            background: #fbfbfb;
-
-            &:hover,
-            &.swiper-slide-thumb-active {
-                opacity: 1;
-                border-color: var(--green);
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            @media (max-width: 767.98px) {
-                width: 80px !important;
-                height: 80px !important;
-            }
-        }
+    @media (max-width: 767.98px) {
+      width: 40px;
+      height: 40px;
+      &--prev { left: 10px; }
+      &--next { right: 10px; }
     }
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    height: 100%;
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
 }
