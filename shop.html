@@ -179,11 +179,15 @@
 										</div>
 									</div>
 									<div class="description-shop__controlls controlls-shop">
-										<div class="controlls-shop__counter">1</div>
+										<div class="controlls-shop__counter">
+												<button type="button" class="counter-btn minus" data-action="decrease">-</button>
+												<span class="counter-value" id="product-count">1</span>
+												<button type="button" class="counter-btn plus" data-action="increase">+</button>
+										</div>
 										<div class="controlls-shop__buttons">
 												<a href="#" class="controlls-shop__buton button">Buy NOW</a>
-												<a href="#" class="controlls-shop__buton button-rev">Add to cart</a>
-												<a href="#" class="controlls-shop__buton button-rev icon-heart"></a>
+												<a href="#" class="controlls-shop__buton controlls-shop__buton-rev button-rev">Add to cart</a>
+												<a href="#" class="controlls-shop__buton controlls-shop__buton-rev button-rev icon-heart"></a>
 										</div>
 								</div>                                              <!-- ← закрываем .controlls-shop ЗДЕСЬ -->
 
@@ -509,7 +513,6 @@
 		</div>
     <script src="js/components/burger.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!-- <script src="js/components/slider_swiper.js"></script> -->
     <script src="js/components/float-head.js"></script>
     <script src="js/components/spoller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
@@ -521,5 +524,6 @@
     <script src="js/components/anim.js"></script>
     <script src="js/stars_rating.js"></script>
     <script src="js/swiper-gallery.js"></script>
+    <script src="js/counter.js"></script>
   </body>
 </html>
