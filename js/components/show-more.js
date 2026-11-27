@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	function initSpoiler() {
 			if (window.innerWidth <= breakpoint && !spoilerInitialized) {
-					const textCells = document.querySelectorAll('.table-service__text');
+					const textCells = document.querySelectorAll('.show-more');
 					
 					textCells.forEach((cell, index) => {
 							if (!cell.hasAttribute('data-spoiler-init')) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function handleSpoilerClick(e) {
 			e.preventDefault();
 			const btn = e.target;
-			const cell = btn.closest('.table-service__text');
+			const cell = btn.closest('.show-more');
 			const contentDiv = cell.querySelector('[data-spoiler-content="true"]');
 			const fullText = cell.getAttribute('data-spoiler-fulltext');
 			const currentState = cell.getAttribute('data-spoiler-state');
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	function resetSpoiler() {
-			document.querySelectorAll('.table-service__text[data-spoiler-init="true"]').forEach(cell => {
+			document.querySelectorAll('.show-more[data-spoiler-init="true"]').forEach(cell => {
 					const originalText = cell.getAttribute('data-spoiler-original');
 					cell.innerHTML = originalText;
 					cell.removeAttribute('data-spoiler-init');
