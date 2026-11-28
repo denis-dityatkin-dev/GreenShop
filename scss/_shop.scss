@@ -710,3 +710,88 @@ body.modal-open {
 	}
 }
 
+// ========= releted ===============
+
+.releted {
+    @include adaptive-value("padding-bottom", 128, 40, 0);
+
+    &__container {
+        // Убираем жесткое ограничение, если нужно чтобы слайдер был на всю ширину
+        // max-width: 1200px; 
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    &__slider {
+        width: 100%;
+        overflow: hidden;
+        // Добавляем отступ снизу, чтобы точки не наезжали на контент
+        padding-bottom: 40px; 
+    }
+
+    &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: #fbfbfb; 
+        padding: 20px; 
+        // Высоту лучше сделать авто или через aspect-ratio, чтобы не ломалась верстка
+        height: 250px; 
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain; 
+            transition: transform 0.3s ease;
+            mix-blend-mode: multiply;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &__body {
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 0.9375rem;
+        line-height: 1.07;
+        color: var(--text-header);
+        margin-bottom: .3125rem;
+        font-weight: 400;
+    }
+
+    &__price {
+        font-weight: 700;
+        color: var(--green);
+    }
+
+    &__bullets {
+        // Стилизация точек пагинации Swiper
+        display: flex;
+        justify-content: center;
+        gap: 10px; // Расстояние между точками
+        margin-top: 20px; // Отступ от карточек
+        
+        // Сбрасываем стандартные стили Swiper для точек
+        &.swiper-pagination-bullets {
+            bottom: 0; // Прижимаем к низу
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc; // Серый цвет неактивной точки
+            opacity: 1;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            margin: 0 !important; // Убираем стандартные отступы Swiper, используем gap
+
+            &-active {
+                background-color: var(--green); // Зеленый цвет активной точки
+            }
+        }
+    }
+}

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 													<p style="margin: 0;">${shortText}</p>
 											</div>
 											<button class="spoiler-btn" data-spoiler-btn="true" data-spoiler-id="${index}"
-															style="background: none; border: none; cursor: pointer; padding: 8px 0 0 0; font-size: inherit; font-family: inherit;">
+															style="background: none; border: none; cursor: pointer; padding: 8px 0 0 0; font-size: inherit; color: #3d3d3d; font-weight: 500; font-style: italic; font-family: inherit;">
 													Show More
 											</button>
 									`;
